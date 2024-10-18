@@ -1,14 +1,38 @@
 #include "ClientWindow.Hxx"
 
-namespace nk::Client {
+#include <Windows.h>
+#include <string>
+
+namespace nk {
 	
-	const sf::Vector2u			ClientWindow::DEFAULT_SIZE			= sf::Vector2u(1600u, 900u);
-	const std::string			ClientWindow::DEFAULT_TITLE			= "N/A";
-	const sf::Uint16			ClientWindow::DEFAULT_STYLE			= sf::Style::None;
-	const sf::ContextSettings	ClientWindow::DEFAULT_SETTINGS		= sf::ContextSettings(0, 0, 4); // x4 antialiasing
-	const unsigned				ClientWindow::DEFAULT_FRAME_RATE	= 144u; // Because of my Monitor ;)
+	ClientWindow* ClientWindow::instance = nullptr;
+
+	void ClientWindow::SetupSingleton() {
+		if (instance != nullptr) {
+			delete this;
+		}
+		else {
+			instance = this;
+		}
+	}
+
+	ClientWindow& ClientWindow::Get() {
+		if (instance == nullptr) {
+			instance = new ClientWindow();
+		}
+
+		return *instance;
+	}
+	
+	const sf::Vector2u ClientWindow::DEFAULT_SIZE = sf::Vector2u(1600u, 900u);
+	const std::string ClientWindow::DEFAULT_TITLE = "N/A";
+	const sf::Uint16 ClientWindow::DEFAULT_STYLE = sf::Style::None;
+	const sf::ContextSettings ClientWindow::DEFAULT_SETTINGS = sf::ContextSettings(0, 0, 4); // x4 antialiasing
+	const unsigned ClientWindow::DEFAULT_FRAME_RATE	= 144u;
+	const bool ClientWindow::DEFAULT_VERTICAL_SYNC_ENABLED = true;
 
 	ClientWindow::ClientWindow() {
+
 		renderWindow = new sf::RenderWindow(
 			sf::VideoMode(DEFAULT_SIZE.x, DEFAULT_SIZE.y),
 			DEFAULT_TITLE,
@@ -18,11 +42,48 @@ namespace nk::Client {
 
 		renderWindow->setFramerateLimit(DEFAULT_FRAME_RATE);
 		renderWindow->setVerticalSyncEnabled(DEFAULT_VERTICAL_SYNC_ENABLED);
+
+		event = sf::Event();
+
+		SetupSingleton();
+
 	}
 
-	void ClientWindow::Start() {
+	ClientWindow::~ClientWindow() {
+		delete renderWindow;
+	}
 
-		
+
+	void ClientWindow::StartAndWaitForEnd() {
+
+		sf::Font font;
+		font.loadFromFile("./res/Fonts/NanumSquareRoundB.ttf");
+
+		nk::Network::APIManager a("http://solved.ac/api/v3");
+		a.SetUri("/user/top_100");
+		a.SetQuery("handle", "buelk489");
+		std::string r = a.GetResponse();
+
+		std::wstring wr = u8c(r);
+
+
+		while (renderWindow->isOpen()) {
+
+			if (renderWindow->pollEvent(event)) {
+				
+			}
+
+			sf::Text test;
+			test.setCharacterSize(20);
+			test.setFillColor(sf::Color::White);
+			test.setString(wr);
+			test.setFont(font);
+
+			renderWindow->clear();
+			renderWindow->draw(test);
+			renderWindow->display();
+
+		}
 
 	}
 

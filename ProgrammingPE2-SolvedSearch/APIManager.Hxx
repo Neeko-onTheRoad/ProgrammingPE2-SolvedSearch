@@ -8,7 +8,7 @@
 
 #include <curl/curl.h>
 
-namespace nk::Network {
+namespace nk {
 	class APIManager {
 
 //======================================================================| Constants

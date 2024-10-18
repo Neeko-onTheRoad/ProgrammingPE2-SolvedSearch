@@ -2,14 +2,15 @@
 
 #include "APIManager.Hxx"
 
-namespace nk::Network {
+namespace nk {
 
-	class SolvedAcManager : private APIManager {
+	class SolvedAcManager {
 		
 //======================================================================| Constants
 
 	private:
-		const static std::string URL_SOLVED_AC;
+		const std::string URL_SOLVED_AC;
+		const std::string URI_PROBLEM;
 
 //======================================================================| Con/Destructors
 

@@ -85,6 +85,9 @@
       <AdditionalLibraryDirectories>$(ProjectDir)lib/Curl/Debug64/lib;$(ProjectDir)lib/SFML/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libcurl_a_debug.lib;Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)res\*.*" "$(TargetDir)res\" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -105,6 +108,9 @@
       <AdditionalLibraryDirectories>$(ProjectDir)lib/Curl/Debug64/lib;$(ProjectDir)lib/SFML/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libcurl_a_debug.lib;Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)res\*.*" "$(TargetDir)res\" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -121,6 +127,9 @@
       <AdditionalLibraryDirectories>$(ProjectDir)lib/Curl/Debug64/lib;$(ProjectDir)lib/SFML/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libcurl_a_debug.lib;Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)res\*.*" "$(TargetDir)res\" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -141,17 +150,22 @@
       <AdditionalLibraryDirectories>$(ProjectDir)lib/Curl/Debug64/lib;$(ProjectDir)lib/SFML/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libcurl_a_debug.lib;Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)res\*.*" "$(TargetDir)res\" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="APIManager.Cxx" />
     <ClCompile Include="ClientWindow.Cxx" />
     <ClCompile Include="Index.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
+    <ClCompile Include="LocaleManager.Cxx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APIManager.Hxx" />
     <ClInclude Include="ClientWindow.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
+    <ClInclude Include="LocaleManager.Hxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

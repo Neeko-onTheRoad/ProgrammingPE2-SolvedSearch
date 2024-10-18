@@ -2,9 +2,18 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace nk::Client {
+namespace nk {
 
 	class ClientWindow {
+
+//======================================================================| Singleton
+
+	private:
+		static ClientWindow* instance;
+		void SetupSingleton();
+
+	public:
+		static ClientWindow& Get();
 
 //======================================================================| Constants
 
@@ -20,16 +29,18 @@ namespace nk::Client {
 
 	private:
 		sf::RenderWindow* renderWindow;
+		sf::Event event;
 
 //======================================================================| Con/Destroctors
 
 	public:
 		ClientWindow();
+		~ClientWindow();
 
 //======================================================================| Methods
 
 	public:
-		void Start();
+		void StartAndWaitForEnd();
 
 	};
 

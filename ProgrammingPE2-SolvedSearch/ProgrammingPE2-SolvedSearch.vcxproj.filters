@@ -13,17 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Network">
-      <UniqueIdentifier>{fc66152c-f1e6-474c-8ac5-63cbf143e791}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Network">
-      <UniqueIdentifier>{2ae8b21a-d4b7-45c6-b5fd-469bbc14e388}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Client">
       <UniqueIdentifier>{c7e68bc6-4248-46e2-b5dc-3f7a1f8a3c5f}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\Client">
       <UniqueIdentifier>{8b18edad-4c67-44b5-908c-74031fbea21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System">
+      <UniqueIdentifier>{37d8ee71-5926-4e8b-9101-0335a2beef6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System\Managers">
+      <UniqueIdentifier>{0aa9104b-d7bc-4168-8069-424c4b2cd5f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System\Network">
+      <UniqueIdentifier>{fc66152c-f1e6-474c-8ac5-63cbf143e791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\System">
+      <UniqueIdentifier>{ffc6a850-891c-46c0-9d2d-eb4b28f00b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\System\Managers">
+      <UniqueIdentifier>{5fea312b-22b8-45ca-820a-550e4abc2721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\System\Network">
+      <UniqueIdentifier>{2ae8b21a-d4b7-45c6-b5fd-469bbc14e388}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,24 +43,30 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="APIManager.Cxx">
-      <Filter>소스 파일\Network</Filter>
+      <Filter>소스 파일\System\Network</Filter>
     </ClCompile>
     <ClCompile Include="SolvedAcManager.Cxx">
-      <Filter>소스 파일\Network</Filter>
+      <Filter>소스 파일\System\Network</Filter>
     </ClCompile>
     <ClCompile Include="ClientWindow.Cxx">
       <Filter>소스 파일\Client</Filter>
     </ClCompile>
+    <ClCompile Include="LocaleManager.Cxx">
+      <Filter>소스 파일\System\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APIManager.Hxx">
-      <Filter>헤더 파일\Network</Filter>
+      <Filter>헤더 파일\System\Network</Filter>
     </ClInclude>
     <ClInclude Include="SolvedAcManager.Hxx">
-      <Filter>헤더 파일\Network</Filter>
+      <Filter>헤더 파일\System\Network</Filter>
     </ClInclude>
     <ClInclude Include="ClientWindow.Hxx">
       <Filter>헤더 파일\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="LocaleManager.Hxx">
+      <Filter>헤더 파일\System\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
