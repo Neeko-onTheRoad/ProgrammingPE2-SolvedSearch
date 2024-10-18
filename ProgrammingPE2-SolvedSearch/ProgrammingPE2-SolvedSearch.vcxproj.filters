@@ -13,15 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Network">
+      <UniqueIdentifier>{fc66152c-f1e6-474c-8ac5-63cbf143e791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Network">
+      <UniqueIdentifier>{2ae8b21a-d4b7-45c6-b5fd-469bbc14e388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Client">
+      <UniqueIdentifier>{c7e68bc6-4248-46e2-b5dc-3f7a1f8a3c5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Client">
+      <UniqueIdentifier>{8b18edad-4c67-44b5-908c-74031fbea21e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Index.Cxx">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="APIManager.Cxx">
+      <Filter>소스 파일\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="SolvedAcManager.Cxx">
+      <Filter>소스 파일\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientWindow.Cxx">
+      <Filter>소스 파일\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APIManager.Hxx">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="SolvedAcManager.Hxx">
+      <Filter>헤더 파일\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientWindow.Hxx">
+      <Filter>헤더 파일\Client</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

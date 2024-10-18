@@ -2,12 +2,13 @@
 
 #define CURL_STATICLIB
 
-#include <map>
 #include <sstream>
 #include <iostream>
+#include <unordered_map>
+
 #include <curl/curl.h>
 
-namespace nk {
+namespace nk::Network {
 	class APIManager {
 
 //======================================================================| Constants
@@ -19,7 +20,7 @@ namespace nk {
 
 	private:
 		using StringPair = std::pair<std::string, std::string>;
-		using StringPairs = std::map<std::string, std::string>;
+		using StringPairs = std::unordered_map<std::string, std::string>;
 
 //======================================================================| Members
 
