@@ -25,7 +25,6 @@ namespace nk {
 	private:
 		ApiManager apiManager;
 
-	public:
 		std::set<std::string> tagKeys;
 		std::unordered_map<std::string, std::string> tagKeyNameTable;
 
@@ -38,6 +37,10 @@ namespace nk {
 
 	private:
 		void InitTags();
+
+	public:
+		const std::set<std::string>& GetTags() const;
+		const std::string GetTagName(std::string) const;
 
 	};
 

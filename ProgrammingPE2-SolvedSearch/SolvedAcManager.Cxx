@@ -45,4 +45,12 @@ namespace nk {
 
 	}
 
+	const std::set<std::string>& SolvedAcManager::GetTags() const {
+		return tagKeys;
+	}
+	
+	const std::string SolvedAcManager::GetTagName(std::string tag) const {
+		return tagKeyNameTable.at(tag);
+	}
+
 }

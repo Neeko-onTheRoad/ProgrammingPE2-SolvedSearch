@@ -159,6 +159,7 @@
     <ClCompile Include="ClientWindow.Cxx" />
     <ClCompile Include="Index.Cxx" />
     <ClCompile Include="JsonManager.Cxx" />
+    <ClCompile Include="SaveManager.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
     <ClCompile Include="LocaleManager.Cxx" />
   </ItemGroup>
@@ -166,6 +167,7 @@
     <ClInclude Include="ApiManager.Hxx" />
     <ClInclude Include="ClientWindow.Hxx" />
     <ClInclude Include="JsonManager.Hxx" />
+    <ClInclude Include="SaveManager.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
     <ClInclude Include="LocaleManager.Hxx" />
   </ItemGroup>
