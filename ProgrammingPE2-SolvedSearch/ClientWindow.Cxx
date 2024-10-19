@@ -1,8 +1,5 @@
 #include "ClientWindow.Hxx"
 
-#include <Windows.h>
-#include <string>
-
 namespace nk {
 	
 	ClientWindow* ClientWindow::instance = nullptr;
@@ -56,7 +53,6 @@ namespace nk {
 
 	void ClientWindow::StartAndWaitForEnd() {
 
-
 		while (renderWindow->isOpen()) {
 
 			renderWindow->pollEvent(event);
@@ -70,22 +66,40 @@ namespace nk {
 
 	}
 
-	void ClientWindow::MakeScene() {
-		
-	}
-
 	void ClientWindow::UpdateAll() {
-		
+		for (const auto& objectLayer : objectLayers) {
+			for (const auto& object : objectLayer.second) {
+				object->UpdateBase(event);
+			}
+		}
 	}
 
 	void ClientWindow::RenderAll() const {
-
 		for (const auto& objectLayer : objectLayers) {
 			for (const auto& object : objectLayer.second) {
-				
+				object->DrawBase(*renderWindow, sf::RenderStates());
+			}
+		}
+	}
+
+	void ClientWindow::AddObject(ClientObject* object, Layers layer) {
+		objectLayers[layer].push_back(object);
+	}
+
+	bool ClientWindow::RemoveObject(ClientObject* object) {
+
+		for (auto& objectLayer : objectLayers) {
+
+			auto& objects = objectLayer.second;
+			auto objectFound = std::find(objects.begin(), objects.end(), object);
+
+			if (objectFound != objects.end()) {
+				objects.erase(objectFound);
+				return true;
 			}
 		}
 
+		return false;
 	}
 
 }

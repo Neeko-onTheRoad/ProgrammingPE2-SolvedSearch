@@ -156,6 +156,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ApiManager.Cxx" />
+    <ClCompile Include="Background.Cxx" />
+    <ClCompile Include="BuildScene.Cxx" />
+    <ClCompile Include="BuildScene.Hxx" />
     <ClCompile Include="ClientData.Cxx" />
     <ClCompile Include="ClientObject.Cxx" />
     <ClCompile Include="ClientWindow.Cxx" />
@@ -163,9 +166,11 @@
     <ClCompile Include="SaveManager.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
     <ClCompile Include="LocaleManager.Cxx" />
+    <ClCompile Include="TitleBar.Cxx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx" />
+    <ClInclude Include="Background.Hxx" />
     <ClInclude Include="ClientData.Hxx" />
     <ClInclude Include="ClientObject.Hxx" />
     <ClInclude Include="ClientWindow.Hxx" />
@@ -173,6 +178,7 @@
     <ClInclude Include="SaveManager.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
     <ClInclude Include="LocaleManager.Hxx" />
+    <ClInclude Include="TitleBar.Hxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

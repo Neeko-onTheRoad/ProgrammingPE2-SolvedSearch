@@ -1,5 +1,7 @@
 #pragma once
 
+#include <climits>
+#include <algorithm>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include "ClientObject.Hxx"
@@ -13,6 +15,11 @@ namespace nk {
 	public:
 		using ObjectLayers = std::unordered_map<int, std::vector<ClientObject*>>;
 
+		enum Layers {
+			Background = INT_MIN,
+			TaskBars = INT_MAX
+		};
+
 //======================================================================| Singleton
 
 	private:
@@ -24,7 +31,7 @@ namespace nk {
 
 //======================================================================| Constants
 
-	private:
+	public:
 		const static sf::Vector2u			DEFAULT_SIZE;
 		const static std::string			DEFAULT_TITLE;
 		const static sf::Uint16				DEFAULT_STYLE;
@@ -47,13 +54,15 @@ namespace nk {
 
 //======================================================================| Methods
 
+	private:
+		void UpdateAll();
+		void RenderAll() const;
+
 	public:
 		void StartAndWaitForEnd();
 
-	private:
-		void MakeScene();
-		void UpdateAll();
-		void RenderAll() const;
+		void AddObject(ClientObject* object, Layers layer);
+		bool RemoveObject(ClientObject* object);
 
 	};
 
