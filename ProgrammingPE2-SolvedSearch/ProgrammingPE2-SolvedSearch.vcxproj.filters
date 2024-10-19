@@ -37,6 +37,12 @@
     <Filter Include="헤더 파일\System\Network">
       <UniqueIdentifier>{2ae8b21a-d4b7-45c6-b5fd-469bbc14e388}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\System\Datas">
+      <UniqueIdentifier>{d32409d9-0b1c-4be2-a7d1-b45fd43e05b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System\Datas">
+      <UniqueIdentifier>{cf3d04da-842b-4acc-8db8-7ed10db47b9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Index.Cxx">
@@ -54,11 +60,14 @@
     <ClCompile Include="LocaleManager.Cxx">
       <Filter>소스 파일\System\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="JsonManager.Cxx">
-      <Filter>소스 파일\System\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="SaveManager.Cxx">
       <Filter>소스 파일\System\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientData.Cxx">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonConvertable.Cxx">
+      <Filter>소스 파일\System\Datas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,11 +83,14 @@
     <ClInclude Include="LocaleManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="JsonManager.Hxx">
-      <Filter>헤더 파일\System\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="SaveManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientData.Hxx">
+      <Filter>헤더 파일\System\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonConvertable.Hxx">
+      <Filter>헤더 파일\System</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

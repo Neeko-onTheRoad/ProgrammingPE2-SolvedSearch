@@ -9,9 +9,14 @@ namespace nk {
 
 	class SaveManager {
 
-		static void Save(nlm::json target, std::string path);
+	public:
+
+		
+		static void Save(const nlm::json& target, std::string path);
 		static nlm::json Load(std::string path);
 
 	};
+
+
 
 }
