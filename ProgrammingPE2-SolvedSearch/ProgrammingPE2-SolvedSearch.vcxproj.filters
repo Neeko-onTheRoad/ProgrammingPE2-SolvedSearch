@@ -42,7 +42,7 @@
     <ClCompile Include="Index.Cxx">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="APIManager.Cxx">
+    <ClCompile Include="ApiManager.Cxx">
       <Filter>소스 파일\System\Network</Filter>
     </ClCompile>
     <ClCompile Include="SolvedAcManager.Cxx">
@@ -54,9 +54,12 @@
     <ClCompile Include="LocaleManager.Cxx">
       <Filter>소스 파일\System\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="JsonManager.Cxx">
+      <Filter>소스 파일\System\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="APIManager.Hxx">
+    <ClInclude Include="ApiManager.Hxx">
       <Filter>헤더 파일\System\Network</Filter>
     </ClInclude>
     <ClInclude Include="SolvedAcManager.Hxx">
@@ -66,6 +69,9 @@
       <Filter>헤더 파일\Client</Filter>
     </ClInclude>
     <ClInclude Include="LocaleManager.Hxx">
+      <Filter>헤더 파일\System\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
     </ClInclude>
   </ItemGroup>

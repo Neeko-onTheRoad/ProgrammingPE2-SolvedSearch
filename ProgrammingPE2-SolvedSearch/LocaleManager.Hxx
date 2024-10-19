@@ -5,8 +5,8 @@
 
 namespace nk {
 	
-	namespace Locale {
-		std::wstring Utf8ToWString(const std::string& str);
-	}
+	class LocaleManager {
+		static std::wstring Utf8ToWString(const std::string& str);
+	};
 
 }

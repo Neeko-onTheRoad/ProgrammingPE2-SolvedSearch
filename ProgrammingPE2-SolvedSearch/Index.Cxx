@@ -1,9 +1,9 @@
+#include "SolvedAcManager.Hxx"
 #include "ClientWindow.Hxx"
 
 int main() {
 	
-	nk::Client::ClientWindow client;
-	client.StartAndWaitForEnd();
+	nk::SolvedAcManager m;
 
 	return EXIT_SUCCESS;
 

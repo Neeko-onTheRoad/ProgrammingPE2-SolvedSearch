@@ -56,16 +56,6 @@ namespace nk {
 
 	void ClientWindow::StartAndWaitForEnd() {
 
-		sf::Font font;
-		font.loadFromFile("./res/Fonts/NanumSquareRoundB.ttf");
-
-		nk::Network::APIManager a("http://solved.ac/api/v3");
-		a.SetUri("/user/top_100");
-		a.SetQuery("handle", "buelk489");
-		std::string r = a.GetResponse();
-
-		std::wstring wr = u8c(r);
-
 
 		while (renderWindow->isOpen()) {
 
@@ -73,14 +63,10 @@ namespace nk {
 				
 			}
 
-			sf::Text test;
-			test.setCharacterSize(20);
-			test.setFillColor(sf::Color::White);
-			test.setString(wr);
-			test.setFont(font);
-
 			renderWindow->clear();
-			renderWindow->draw(test);
+
+
+
 			renderWindow->display();
 
 		}

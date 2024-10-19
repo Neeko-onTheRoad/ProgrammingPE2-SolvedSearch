@@ -9,7 +9,7 @@
 #include <curl/curl.h>
 
 namespace nk {
-	class APIManager {
+	class ApiManager {
 
 //======================================================================| Constants
 
@@ -34,8 +34,8 @@ namespace nk {
 //======================================================================| Con/Destructors
 
 	public:
-		APIManager(std::string hostUrl);
-		~APIManager();
+		ApiManager(std::string hostUrl);
+		~ApiManager();
 
 //======================================================================| Methods
 

@@ -2,10 +2,10 @@
 
 namespace nk {
 
-	const char* APIManager::MASTER_KEY = 
+	const char* ApiManager::MASTER_KEY = 
 		"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36";
 
-	APIManager::APIManager(std::string hostUrl) {
+	ApiManager::ApiManager(std::string hostUrl) {
 
 		this->hostUrl = hostUrl;
 		curlClient = curl_easy_init();
@@ -14,11 +14,11 @@ namespace nk {
 			throw std::runtime_error("Fail to init curl");
 		}
 
-		curl_easy_setopt(curlClient, CURLOPT_USERAGENT, APIManager::MASTER_KEY);
+		curl_easy_setopt(curlClient, CURLOPT_USERAGENT, ApiManager::MASTER_KEY);
 
 	}
 
-	APIManager::~APIManager() {
+	ApiManager::~ApiManager() {
 
 		if (curlClient) {
 			curl_easy_cleanup(curlClient);
@@ -26,7 +26,7 @@ namespace nk {
 
 	}
 
-	std::string APIManager::BuildUrl() const {
+	std::string ApiManager::BuildUrl() const {
 		
 		std::ostringstream result;
 		result << hostUrl;
@@ -49,42 +49,43 @@ namespace nk {
 		return result.str();
 	}
 
-	std::string APIManager::BuildHeader(const StringPair& header) const {
+	std::string ApiManager::BuildHeader(const StringPair& header) const {
 		return header.first + ": " + header.second;
 	}
 
-	size_t APIManager::WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
+	size_t ApiManager::WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
 		size_t newLength = size * nmemb;
 		userp->append((char*)contents, newLength);
 		return newLength;
 	}
 
-	void APIManager::SetUri(const std::string& uri) {
+	void ApiManager::SetUri(const std::string& uri) {
 		this->uri = uri;
 	}
 
-	void APIManager::SetQuery(const std::string& key, const std::string& value) {
+	void ApiManager::SetQuery(const std::string& key, const std::string& value) {
 		queries[key] = value;
 	}
 
-	void APIManager::ClearQuery() {
+	void ApiManager::ClearQuery() {
 		queries.clear();
 	}
 
-	void APIManager::SetHeader(const std::string& key, const std::string& value) {
+	void ApiManager::SetHeader(const std::string& key, const std::string& value) {
 		headers[key] = value;
 	}
 
-	void APIManager::ClearHeader() {
+	void ApiManager::ClearHeader() {
 		headers.clear();
 	}
 
-	void APIManager::ClearAll() {
+	void ApiManager::ClearAll() {
+		uri = "";
 		ClearQuery();
 		ClearHeader();
 	}
 
-	std::string APIManager::GetResponse() {
+	std::string ApiManager::GetResponse() {
 		
 		std::string readBuffer;
 		CURLcode errorCode;
@@ -116,7 +117,7 @@ namespace nk {
 
 	}
 
-	std::string APIManager::GetResponseAndClear() {
+	std::string ApiManager::GetResponseAndClear() {
 		std::string result = GetResponse();
 		ClearAll();
 		return result;
