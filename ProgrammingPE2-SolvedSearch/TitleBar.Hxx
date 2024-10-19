@@ -16,7 +16,7 @@ namespace nk {
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-		void Update(const sf::Event& )
+		void Update(const sf::Event& event) override;
 
 	};
 
