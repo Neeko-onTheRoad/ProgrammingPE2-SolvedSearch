@@ -59,16 +59,31 @@ namespace nk {
 
 		while (renderWindow->isOpen()) {
 
-			if (renderWindow->pollEvent(event)) {
-				
-			}
+			renderWindow->pollEvent(event);
+			UpdateAll();
 
 			renderWindow->clear();
-
-
-
+			RenderAll();
 			renderWindow->display();
 
+		}
+
+	}
+
+	void ClientWindow::MakeScene() {
+		
+	}
+
+	void ClientWindow::UpdateAll() {
+		
+	}
+
+	void ClientWindow::RenderAll() const {
+
+		for (const auto& objectLayer : objectLayers) {
+			for (const auto& object : objectLayer.second) {
+				
+			}
 		}
 
 	}

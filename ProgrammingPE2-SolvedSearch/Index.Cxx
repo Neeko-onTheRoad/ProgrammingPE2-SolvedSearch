@@ -3,7 +3,8 @@
 
 int main() {
 	
-	nk::SolvedAcManager m;
+	nk::ClientWindow client;
+	client.StartAndWaitForEnd();
 
 	return EXIT_SUCCESS;
 

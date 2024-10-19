@@ -1,10 +1,17 @@
 #pragma once
 
+#include <unordered_map>
 #include <SFML/Graphics.hpp>
+#include "ClientObject.Hxx"
 
 namespace nk {
 
 	class ClientWindow {
+		
+//======================================================================| Types
+
+	public:
+		using ObjectLayers = std::unordered_map<int, std::vector<ClientObject*>>;
 
 //======================================================================| Singleton
 
@@ -30,6 +37,7 @@ namespace nk {
 	private:
 		sf::RenderWindow* renderWindow;
 		sf::Event event;
+		ObjectLayers objectLayers;
 
 //======================================================================| Con/Destroctors
 
@@ -41,6 +49,11 @@ namespace nk {
 
 	public:
 		void StartAndWaitForEnd();
+
+	private:
+		void MakeScene();
+		void UpdateAll();
+		void RenderAll() const;
 
 	};
 
