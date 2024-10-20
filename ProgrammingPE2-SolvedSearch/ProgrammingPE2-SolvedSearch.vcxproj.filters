@@ -5,19 +5,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="소스 파일\Client">
       <UniqueIdentifier>{c7e68bc6-4248-46e2-b5dc-3f7a1f8a3c5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Client">
-      <UniqueIdentifier>{8b18edad-4c67-44b5-908c-74031fbea21e}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\System">
       <UniqueIdentifier>{37d8ee71-5926-4e8b-9101-0335a2beef6a}</UniqueIdentifier>
@@ -27,6 +20,22 @@
     </Filter>
     <Filter Include="소스 파일\System\Network">
       <UniqueIdentifier>{fc66152c-f1e6-474c-8ac5-63cbf143e791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System\Datas">
+      <UniqueIdentifier>{cf3d04da-842b-4acc-8db8-7ed10db47b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Client\Objects">
+      <UniqueIdentifier>{2907d0e4-7d66-4f76-a10a-47b8217ef5bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\Client">
+      <UniqueIdentifier>{8b18edad-4c67-44b5-908c-74031fbea21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Client\Objects">
+      <UniqueIdentifier>{5c096f91-2a38-4fd2-86a2-728cc70a58ca}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\System">
       <UniqueIdentifier>{ffc6a850-891c-46c0-9d2d-eb4b28f00b86}</UniqueIdentifier>
@@ -39,9 +48,6 @@
     </Filter>
     <Filter Include="헤더 파일\System\Datas">
       <UniqueIdentifier>{d32409d9-0b1c-4be2-a7d1-b45fd43e05b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\System\Datas">
-      <UniqueIdentifier>{cf3d04da-842b-4acc-8db8-7ed10db47b9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +69,23 @@
     <ClCompile Include="SaveManager.Cxx">
       <Filter>소스 파일\System\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="ClientData.Cxx">
+    <ClCompile Include="BuildScene.Cxx">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="JsonConvertable.Cxx">
-      <Filter>소스 파일\System\Datas</Filter>
+    <ClCompile Include="BuildScene.Hxx">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBar.Cxx">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientObject.Cxx">
+      <Filter>소스 파일\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientData.Cxx">
+      <Filter>소스 파일\Client\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.Cxx">
+      <Filter>소스 파일\Client\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="JsonConvertable.Hxx">
       <Filter>헤더 파일\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.Hxx">
+      <Filter>헤더 파일\Client\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBar.Hxx">
+      <Filter>헤더 파일\Client\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientObject.Hxx">
+      <Filter>헤더 파일\Client</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
