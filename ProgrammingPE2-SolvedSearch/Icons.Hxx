@@ -8,7 +8,10 @@ namespace nk {
 
 		const static std::string IconPath = "./res/Icons/";
 
-		void LoadIcons();
+		static sf::Texture CloseButton;
+		static sf::Texture MinimalizeButton;
+
+		static void LoadIcons();
 
 	}
 

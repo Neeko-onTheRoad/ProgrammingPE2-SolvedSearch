@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
+#include "Fonts.Hxx"
+#include "Icons.Hxx"
 #include "ClientObject.Hxx"
 
 namespace nk {

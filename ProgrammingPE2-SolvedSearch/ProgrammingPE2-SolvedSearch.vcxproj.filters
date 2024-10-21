@@ -87,6 +87,9 @@
     <ClCompile Include="Fonts.Cxx">
       <Filter>소스 파일\Datas</Filter>
     </ClCompile>
+    <ClCompile Include="Icons.Cxx">
+      <Filter>소스 파일\Datas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx">

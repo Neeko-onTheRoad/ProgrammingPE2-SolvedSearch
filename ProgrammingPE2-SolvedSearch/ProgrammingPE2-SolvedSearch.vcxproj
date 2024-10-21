@@ -162,6 +162,7 @@
     <ClCompile Include="ClientObject.Cxx" />
     <ClCompile Include="ClientWindow.Cxx" />
     <ClCompile Include="Fonts.Cxx" />
+    <ClCompile Include="Icons.Cxx" />
     <ClCompile Include="Index.Cxx" />
     <ClCompile Include="SaveManager.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />

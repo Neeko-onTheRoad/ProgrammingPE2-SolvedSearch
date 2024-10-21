@@ -17,7 +17,7 @@ namespace nk {
 
 		}
 
-		void LoadFonts();
+		static void LoadFonts();
 
 	};
 

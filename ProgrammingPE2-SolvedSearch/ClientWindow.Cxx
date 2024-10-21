@@ -32,6 +32,9 @@ namespace nk {
 
 		SetupSingleton();
 
+		Fonts::LoadFonts();
+		Icons::LoadIcons();
+
 		renderWindow = new sf::RenderWindow(
 			sf::VideoMode(DEFAULT_SIZE.x, DEFAULT_SIZE.y),
 			DEFAULT_TITLE,
