@@ -22,7 +22,7 @@ namespace nk {
 	}
 	
 	const sf::Vector2u ClientWindow::DEFAULT_SIZE = sf::Vector2u(1600u, 1000u);
-	const std::string ClientWindow::DEFAULT_TITLE = "N/A";
+	const std::string ClientWindow::DEFAULT_TITLE = "Solved Search";
 	const sf::Uint16 ClientWindow::DEFAULT_STYLE = sf::Style::None;
 	const sf::ContextSettings ClientWindow::DEFAULT_SETTINGS = sf::ContextSettings(0, 0, 4); // x4 antialiasing
 	const unsigned ClientWindow::DEFAULT_FRAME_RATE	= 144u;
@@ -47,6 +47,12 @@ namespace nk {
 
 		event = sf::Event();
 
+		renderWindow->setIcon(
+			Icons::SolvedLogo.getSize().x,
+			Icons::SolvedLogo.getSize().y,
+			Icons::SolvedLogo.copyToImage().getPixelsPtr()
+		);
+
 	}
 
 	ClientWindow::~ClientWindow() {
@@ -62,6 +68,9 @@ namespace nk {
 				if (event.type == sf::Event::Closed) {
 					renderWindow->close();
 					return;
+				}
+				if (event.type == sf::Event::LostFocus) {
+					puts("FUCK");
 				}
 				UpdateAll();
 			}
@@ -128,6 +137,14 @@ namespace nk {
 
 	void ClientWindow::SetPosition(int x, int y) {
 		renderWindow->setPosition({ x, y });
+	}
+
+    void ClientWindow::Close() {
+		renderWindow->close();
+	}
+
+	void ClientWindow::Minimize() {
+		ShowWindow(renderWindow->getSystemHandle(), SW_MINIMIZE);
 	}
 
 }

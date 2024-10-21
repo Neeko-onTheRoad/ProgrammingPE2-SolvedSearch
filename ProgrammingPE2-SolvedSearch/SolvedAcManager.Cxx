@@ -39,9 +39,6 @@ namespace nk {
 
 		}
 
-		for (const auto& i : tagKeys) {
-			std::cout << i << "  " <<  tagKeyNameTable[i] << "\n";
-		}
 
 	}
 

@@ -18,12 +18,12 @@ void BuildScene(ClientWindow& client) {
 	client.AddObject(
 		new TitleBar(
 			0.04f,
-			0.04f,
-			0.8f,
+			0.035f,
+			0.43f,
 			AcColors::DarkerGray,
 			AcColors::LightGray,
-			AcColors::Hilight,
-			AcColors::White
+			AcColors::White,
+			AcColors::LightGray
 		),
 		Layer::TitleBar
 	);

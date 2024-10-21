@@ -4,15 +4,18 @@
 
 namespace nk {
 
-	namespace Icons {
+	class Icons {
+	public:
 
-		const static std::string IconPath = "./res/Icons/";
+		const static std::string IconPath;
 
 		static sf::Texture CloseButton;
-		static sf::Texture MinimalizeButton;
+		static sf::Texture MinimizeButton;
+		static sf::Texture SolvedLogo;
+		static sf::Texture SolvedLogoNoBG;
 
-		void LoadIcons();
+		static void LoadIcons();
 
-	}
+	};
 
 }

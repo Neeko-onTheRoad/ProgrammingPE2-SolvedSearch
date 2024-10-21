@@ -1,7 +1,10 @@
 #pragma once
 
+#define NOMINMAX
+
 #include <climits>
 #include <algorithm>
+#include <Windows.h>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
 #include "Fonts.Hxx"
@@ -47,6 +50,7 @@ namespace nk {
 		sf::RenderWindow* renderWindow;
 		sf::Event event;
 		ObjectLayers objectLayers;
+		WNDPROC originalWindow;
 
 //======================================================================| Con/Destroctors
 
@@ -72,6 +76,9 @@ namespace nk {
 		sf::Vector2i GetPosition() const;
 		void SetPosition(sf::Vector2i position);
 		void SetPosition(int x, int y);
+
+		void Close();
+		void Minimize();
 
 	};
 
