@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ClientObject.Hxx"
+#include "ClientWindow.Hxx"
 
 namespace nk {
 
@@ -14,11 +14,22 @@ namespace nk {
 		sf::Sprite closeIcon;
 		sf::Sprite minimalizeIcon;
 
+		bool isWindowMoveing = false;
+		sf::Vector2i windowMoveingMouseOffset;
+
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 		void Update(const sf::Event& event) override;
 
-		TitleBar();
+	public:
+		TitleBar(
+			float height,
+			float buttonWidth,
+			const sf::Color& backgroundColor,
+			const sf::Color& iconColor,
+			const sf::Color& iconHoverColor,
+			const sf::Color& iconHoverBackgroundColor
+		);
 
 	};
 

@@ -161,10 +161,8 @@
     <ClCompile Include="BuildScene.Hxx" />
     <ClCompile Include="ClientObject.Cxx" />
     <ClCompile Include="ClientWindow.Cxx" />
-    <ClCompile Include="AcColors.Cxx" />
     <ClCompile Include="Fonts.Cxx" />
     <ClCompile Include="Index.Cxx" />
-    <ClCompile Include="Resources.Cxx" />
     <ClCompile Include="SaveManager.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
     <ClCompile Include="LocaleManager.Cxx" />
@@ -178,7 +176,7 @@
     <ClInclude Include="AcColors.Hxx" />
     <ClInclude Include="Fonts.Hxx" />
     <ClInclude Include="JsonConvertable.Hxx" />
-    <ClInclude Include="Resources.Hxx" />
+    <ClInclude Include="Icons.Hxx" />
     <ClInclude Include="SaveManager.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
     <ClInclude Include="LocaleManager.Hxx" />

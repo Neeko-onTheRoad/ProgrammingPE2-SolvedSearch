@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ClientObject.Hxx"
+#include "ClientWindow.Hxx"
 
 namespace nk {
 
@@ -13,7 +13,7 @@ namespace nk {
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	public:
-		Background(sf::Color color);
+		Background(const sf::Color& color);
 
 
 	};

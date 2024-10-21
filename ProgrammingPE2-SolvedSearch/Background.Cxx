@@ -1,11 +1,8 @@
 #include "Background.Hxx"
-#include "ClientWindow.Hxx"
-
-#include <iostream>
 
 namespace nk {
 
-	Background::Background(sf::Color color) {
+	Background::Background(const sf::Color& color) {
 		backgroundRect.setFillColor(color);
 		backgroundRect.setPosition(0.f, 0.f);
 		backgroundRect.setSize(ClientWindow::Get().GetSizeF());

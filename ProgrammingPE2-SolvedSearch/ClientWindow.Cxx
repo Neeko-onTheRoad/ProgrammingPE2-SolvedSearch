@@ -21,7 +21,7 @@ namespace nk {
 		return *instance;
 	}
 	
-	const sf::Vector2u ClientWindow::DEFAULT_SIZE = sf::Vector2u(1600u, 900u);
+	const sf::Vector2u ClientWindow::DEFAULT_SIZE = sf::Vector2u(1600u, 1000u);
 	const std::string ClientWindow::DEFAULT_TITLE = "N/A";
 	const sf::Uint16 ClientWindow::DEFAULT_STYLE = sf::Style::None;
 	const sf::ContextSettings ClientWindow::DEFAULT_SETTINGS = sf::ContextSettings(0, 0, 4); // x4 antialiasing
@@ -29,6 +29,8 @@ namespace nk {
 	const bool ClientWindow::DEFAULT_VERTICAL_SYNC_ENABLED = true;
 
 	ClientWindow::ClientWindow() {
+
+		SetupSingleton();
 
 		renderWindow = new sf::RenderWindow(
 			sf::VideoMode(DEFAULT_SIZE.x, DEFAULT_SIZE.y),
@@ -41,8 +43,6 @@ namespace nk {
 		renderWindow->setVerticalSyncEnabled(DEFAULT_VERTICAL_SYNC_ENABLED);
 
 		event = sf::Event();
-
-		SetupSingleton();
 
 	}
 

@@ -17,7 +17,7 @@ namespace nk {
 
 		enum Layers {
 			Background = INT_MIN,
-			TaskBars = INT_MAX
+			TitleBar = INT_MAX
 		};
 
 //======================================================================| Singleton

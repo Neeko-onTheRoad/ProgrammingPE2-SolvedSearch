@@ -43,11 +43,11 @@
     <Filter Include="헤더 파일\System\Network">
       <UniqueIdentifier>{2ae8b21a-d4b7-45c6-b5fd-469bbc14e388}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Datas">
-      <UniqueIdentifier>{cf3d04da-842b-4acc-8db8-7ed10db47b9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Datas">
       <UniqueIdentifier>{d32409d9-0b1c-4be2-a7d1-b45fd43e05b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Datas">
+      <UniqueIdentifier>{e9046a95-d40f-42be-80d7-053f950e761d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -84,12 +84,6 @@
     <ClCompile Include="TitleBar.Cxx">
       <Filter>소스 파일\Client\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="AcColors.Cxx">
-      <Filter>소스 파일\Datas</Filter>
-    </ClCompile>
-    <ClCompile Include="Resources.Cxx">
-      <Filter>소스 파일\Datas</Filter>
-    </ClCompile>
     <ClCompile Include="Fonts.Cxx">
       <Filter>소스 파일\Datas</Filter>
     </ClCompile>
@@ -125,7 +119,7 @@
     <ClInclude Include="AcColors.Hxx">
       <Filter>헤더 파일\Datas</Filter>
     </ClInclude>
-    <ClInclude Include="Resources.Hxx">
+    <ClInclude Include="Icons.Hxx">
       <Filter>헤더 파일\Datas</Filter>
     </ClInclude>
     <ClInclude Include="Fonts.Hxx">

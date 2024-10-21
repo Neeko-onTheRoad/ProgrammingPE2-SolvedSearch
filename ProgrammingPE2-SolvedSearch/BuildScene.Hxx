@@ -2,6 +2,6 @@
 
 #include "AcColors.Hxx"
 #include "Background.Hxx"
-#include "ClientWindow.Hxx"
+#include "TitleBar.Hxx"
 
 void BuildScene(nk::ClientWindow& clinet);
