@@ -75,17 +75,17 @@
     <ClCompile Include="BuildScene.Hxx">
       <Filter>헤더 파일</Filter>
     </ClCompile>
-    <ClCompile Include="TitleBar.Cxx">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="ClientObject.Cxx">
       <Filter>소스 파일\Client</Filter>
     </ClCompile>
-    <ClCompile Include="ClientData.Cxx">
-      <Filter>소스 파일\Client\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Background.Cxx">
       <Filter>소스 파일\Client\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBar.Cxx">
+      <Filter>소스 파일\Client\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Colors.Cxx">
+      <Filter>소스 파일\System\Datas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +104,6 @@
     <ClInclude Include="SaveManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="ClientData.Hxx">
-      <Filter>헤더 파일\System\Datas</Filter>
-    </ClInclude>
     <ClInclude Include="JsonConvertable.Hxx">
       <Filter>헤더 파일\System</Filter>
     </ClInclude>
@@ -118,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="ClientObject.Hxx">
       <Filter>헤더 파일\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Colors.Hxx">
+      <Filter>헤더 파일\System\Datas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

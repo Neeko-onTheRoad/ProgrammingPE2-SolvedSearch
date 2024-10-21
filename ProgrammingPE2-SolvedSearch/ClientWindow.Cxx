@@ -102,4 +102,20 @@ namespace nk {
 		return false;
 	}
 
+	sf::Vector2f ClientWindow::GetSizeF() const {
+		return (sf::Vector2f)renderWindow->getSize();
+	}
+
+	sf::Vector2u ClientWindow::GetSize() const {
+		return renderWindow->getSize();
+	}
+
+	sf::Vector2i ClientWindow::GetPosition() const {
+		return renderWindow->getPosition();
+	}
+
+	void ClientWindow::SetPosition(sf::Vector2i position) {
+		renderWindow->setPosition(position);
+	}
+
 }

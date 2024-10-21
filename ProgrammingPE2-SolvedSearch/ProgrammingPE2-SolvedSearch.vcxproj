@@ -159,9 +159,9 @@
     <ClCompile Include="Background.Cxx" />
     <ClCompile Include="BuildScene.Cxx" />
     <ClCompile Include="BuildScene.Hxx" />
-    <ClCompile Include="ClientData.Cxx" />
     <ClCompile Include="ClientObject.Cxx" />
     <ClCompile Include="ClientWindow.Cxx" />
+    <ClCompile Include="Colors.Cxx" />
     <ClCompile Include="Index.Cxx" />
     <ClCompile Include="SaveManager.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
@@ -171,9 +171,9 @@
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx" />
     <ClInclude Include="Background.Hxx" />
-    <ClInclude Include="ClientData.Hxx" />
     <ClInclude Include="ClientObject.Hxx" />
     <ClInclude Include="ClientWindow.Hxx" />
+    <ClInclude Include="Colors.Hxx" />
     <ClInclude Include="JsonConvertable.Hxx" />
     <ClInclude Include="SaveManager.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />

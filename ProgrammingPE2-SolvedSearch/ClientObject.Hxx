@@ -35,7 +35,7 @@ namespace nk {
 	public:
 		void SetActive(bool active);
 		bool IsActive() const;
-
+		7
 		
 	};
 

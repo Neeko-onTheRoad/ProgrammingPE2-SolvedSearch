@@ -9,7 +9,7 @@
 namespace nk {
 
 	class ClientWindow {
-		
+
 //======================================================================| Types
 
 	public:
@@ -31,7 +31,7 @@ namespace nk {
 
 //======================================================================| Constants
 
-	public:
+	private:
 		const static sf::Vector2u			DEFAULT_SIZE;
 		const static std::string			DEFAULT_TITLE;
 		const static sf::Uint16				DEFAULT_STYLE;
@@ -63,6 +63,12 @@ namespace nk {
 
 		void AddObject(ClientObject* object, Layers layer);
 		bool RemoveObject(ClientObject* object);
+
+		sf::Vector2f GetSizeF() const;
+		sf::Vector2u GetSize() const;
+
+		sf::Vector2i GetPosition() const;
+		void SetPosition(sf::Vector2i position);
 
 	};
 

@@ -12,4 +12,15 @@ namespace nk {
 
 	}
 
+	void TitleBar::Update(const sf::Event& event) {
+
+	}
+
+	TitleBar::TitleBar() {
+		
+		background.setPosition(0.f, 0.f);
+		background.setFillColor()
+
+	}
+
 }
