@@ -17,10 +17,15 @@ namespace nk {
 		if (isWindowMoveing) {
 
 			if (event.type == sf::Event::MouseButtonReleased) {
+
 				isWindowMoveing = false;
-				return;
+
+				if (ClientWindow::Get().GetPosition().y < 0) {
+					ClientWindow::Get().SetPosition(ClientWindow::Get().GetPosition().x, 0);
+				}
+
 			}
-			if (event.type == sf::Event::MouseMoved) {
+			else if (event.type == sf::Event::MouseMoved) {
 				ClientWindow::Get().SetPosition(sf::Mouse::getPosition() - windowMoveingMouseOffset);
 			}
 			
@@ -28,7 +33,7 @@ namespace nk {
 		else {
 
 			if (event.type != sf::Event::MouseButtonPressed) return;
-			if (!background.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) return;
+			if (!background.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
 			if (event.mouseButton.button != sf::Mouse::Button::Left) return;
 
 			windowMoveingMouseOffset = {
@@ -45,6 +50,7 @@ namespace nk {
 	TitleBar::TitleBar(
 		float height,
 		float buttonWidth,
+		float iconSize,
 		const sf::Color& backgroundColor,
 		const sf::Color& iconColor,
 		const sf::Color& iconHoverColor,

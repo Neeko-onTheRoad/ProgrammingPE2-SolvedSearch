@@ -18,8 +18,8 @@ namespace nk {
 		using ObjectLayers = std::unordered_map<int, std::vector<ClientObject*>>;
 
 		enum Layers {
-			Background = INT_MIN,
-			TitleBar = INT_MAX
+			Background	= INT_MIN,
+			TitleBar	= INT_MAX
 		};
 
 //======================================================================| Singleton
@@ -71,6 +71,7 @@ namespace nk {
 
 		sf::Vector2i GetPosition() const;
 		void SetPosition(sf::Vector2i position);
+		void SetPosition(int x, int y);
 
 	};
 

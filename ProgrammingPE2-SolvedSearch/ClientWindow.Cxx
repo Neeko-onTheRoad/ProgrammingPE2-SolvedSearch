@@ -58,8 +58,13 @@ namespace nk {
 
 		while (renderWindow->isOpen()) {
 
-			renderWindow->pollEvent(event);
-			UpdateAll();
+			if (renderWindow->pollEvent(event)) {
+				if (event.type == sf::Event::Closed) {
+					renderWindow->close();
+					return;
+				}
+				UpdateAll();
+			}
 
 			renderWindow->clear();
 			RenderAll();
@@ -119,6 +124,10 @@ namespace nk {
 
 	void ClientWindow::SetPosition(sf::Vector2i position) {
 		renderWindow->setPosition(position);
+	}
+
+	void ClientWindow::SetPosition(int x, int y) {
+		renderWindow->setPosition({ x, y });
 	}
 
 }

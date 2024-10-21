@@ -2,7 +2,7 @@
 
 namespace nk::Fonts {
 
-	static void LoadFonts() {
+	void LoadFonts() {
 
 		NanumSquareRound::Light.loadFromFile(FontPath + "NanumSquareRoundL.ttf");
 		NanumSquareRound::Regular.loadFromFile(FontPath + "NanumSquareRoundR.ttf");

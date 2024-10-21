@@ -11,7 +11,7 @@ namespace nk {
 		static sf::Texture CloseButton;
 		static sf::Texture MinimalizeButton;
 
-		static void LoadIcons();
+		void LoadIcons();
 
 	}
 

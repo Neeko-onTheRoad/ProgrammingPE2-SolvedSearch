@@ -66,9 +66,6 @@
     <ClCompile Include="LocaleManager.Cxx">
       <Filter>소스 파일\System\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="SaveManager.Cxx">
-      <Filter>소스 파일\System\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="BuildScene.Cxx">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -90,6 +87,9 @@
     <ClCompile Include="Icons.Cxx">
       <Filter>소스 파일\Datas</Filter>
     </ClCompile>
+    <ClCompile Include="ColorManager.Cxx">
+      <Filter>소스 파일\System\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx">
@@ -102,9 +102,6 @@
       <Filter>헤더 파일\Client</Filter>
     </ClInclude>
     <ClInclude Include="LocaleManager.Hxx">
-      <Filter>헤더 파일\System\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
     </ClInclude>
     <ClInclude Include="JsonConvertable.Hxx">
@@ -127,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="Fonts.Hxx">
       <Filter>헤더 파일\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorManager.Hxx">
+      <Filter>헤더 파일\System\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

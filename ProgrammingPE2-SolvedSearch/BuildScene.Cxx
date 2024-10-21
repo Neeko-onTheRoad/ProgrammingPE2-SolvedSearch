@@ -6,22 +6,27 @@ void BuildScene(ClientWindow& client) {
 	
 	using Layer = ClientWindow::Layers;
 
-	
-	Background* background = new Background(
-		AcColors::DarkGray
+
+	client.AddObject(
+		new Background(
+			AcColors::DarkGray
+		),
+		Layer::Background
 	);
-	client.AddObject(background, Layer::Background);
 
 
-	TitleBar* titleBar = new TitleBar(
-		0.04f,
-		0.04f,
-		AcColors::DarkerGray,
-		AcColors::LightGray,
-		AcColors::Hilight,
-		AcColors::White
+	client.AddObject(
+		new TitleBar(
+			0.04f,
+			0.04f,
+			0.8f,
+			AcColors::DarkerGray,
+			AcColors::LightGray,
+			AcColors::Hilight,
+			AcColors::White
+		),
+		Layer::TitleBar
 	);
-	client.AddObject(titleBar, Layer::TitleBar); 
 
 
 }
