@@ -21,9 +21,6 @@
     <Filter Include="소스 파일\System\Network">
       <UniqueIdentifier>{fc66152c-f1e6-474c-8ac5-63cbf143e791}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\System\Datas">
-      <UniqueIdentifier>{cf3d04da-842b-4acc-8db8-7ed10db47b9a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Client\Objects">
       <UniqueIdentifier>{2907d0e4-7d66-4f76-a10a-47b8217ef5bb}</UniqueIdentifier>
     </Filter>
@@ -46,7 +43,10 @@
     <Filter Include="헤더 파일\System\Network">
       <UniqueIdentifier>{2ae8b21a-d4b7-45c6-b5fd-469bbc14e388}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\System\Datas">
+    <Filter Include="소스 파일\Datas">
+      <UniqueIdentifier>{cf3d04da-842b-4acc-8db8-7ed10db47b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Datas">
       <UniqueIdentifier>{d32409d9-0b1c-4be2-a7d1-b45fd43e05b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -84,8 +84,14 @@
     <ClCompile Include="TitleBar.Cxx">
       <Filter>소스 파일\Client\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Colors.Cxx">
-      <Filter>소스 파일\System\Datas</Filter>
+    <ClCompile Include="AcColors.Cxx">
+      <Filter>소스 파일\Datas</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources.Cxx">
+      <Filter>소스 파일\Datas</Filter>
+    </ClCompile>
+    <ClCompile Include="Fonts.Cxx">
+      <Filter>소스 파일\Datas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,8 +122,14 @@
     <ClInclude Include="ClientObject.Hxx">
       <Filter>헤더 파일\Client</Filter>
     </ClInclude>
-    <ClInclude Include="Colors.Hxx">
-      <Filter>헤더 파일\System\Datas</Filter>
+    <ClInclude Include="AcColors.Hxx">
+      <Filter>헤더 파일\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.Hxx">
+      <Filter>헤더 파일\Datas</Filter>
+    </ClInclude>
+    <ClInclude Include="Fonts.Hxx">
+      <Filter>헤더 파일\Datas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
