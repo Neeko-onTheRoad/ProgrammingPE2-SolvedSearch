@@ -13,16 +13,19 @@
 
 namespace nk {
 
+	typedef float Ratio;
+
 	class ClientWindow {
 
 //======================================================================| Types
 
 	public:
-		using ObjectLayers = std::unordered_map<int, std::vector<ClientObject*>>;
+		using ObjectLayers = std::map<int, std::vector<ClientObject*>>;
 
 		enum Layers {
-			Background	= INT_MIN,
-			TitleBar	= INT_MAX
+			Background			= INT_MIN,
+			ObjectBackgrounds	= INT16_MIN,
+			TitleBar			= INT_MAX
 		};
 
 //======================================================================| Singleton
@@ -51,6 +54,7 @@ namespace nk {
 		sf::Event event;
 		ObjectLayers objectLayers;
 		WNDPROC originalWindow;
+		Ratio titleBarSize;
 
 //======================================================================| Con/Destroctors
 
@@ -70,8 +74,12 @@ namespace nk {
 		void AddObject(ClientObject* object, Layers layer);
 		bool RemoveObject(ClientObject* object);
 
-		sf::Vector2f GetSizeF() const;
-		sf::Vector2u GetSize() const;
+		void SetTitleBarOffset(float titleBarSize);
+		float GetTitleBarOffset() const;
+
+		sf::Vector2f GetSize() const;
+		sf::Vector2f GetRawSizeF() const;
+		sf::Vector2u GetRawSize() const;
 
 		sf::Vector2i GetPosition() const;
 		void SetPosition(sf::Vector2i position);

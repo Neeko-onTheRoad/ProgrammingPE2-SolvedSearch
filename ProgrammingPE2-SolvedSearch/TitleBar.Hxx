@@ -52,14 +52,16 @@ namespace nk {
 
 	public:
 		TitleBar(
-			float height,
-			float buttonWidth,
-			float iconSize,
+			Ratio height,
+			Ratio buttonWidth,
+			Ratio iconSize,
 			const sf::Color& backgroundColor,
 			const sf::Color& iconColor,
 			const sf::Color& iconHoverColor,
 			const sf::Color& iconHoverBackgroundColor
 		);
+
+		float GetHeight();
 
 	};
 

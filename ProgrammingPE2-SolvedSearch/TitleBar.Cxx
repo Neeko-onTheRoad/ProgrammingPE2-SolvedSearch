@@ -61,33 +61,42 @@ namespace nk {
 		bool& clicking, 
 		void (*callback)()
 	) {
-	
+
+		bool cursorHovering = background
+			.getGlobalBounds()
+			.contains(
+				(float)event.mouseMove.x,
+				(float)event.mouseMove.y
+			);
+
 		if (hovering) {
 			if (event.type == sf::Event::MouseMoved) {
-				if (background.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-				SetButtonHover(false, background, icon);
-				hovering = false;
-				clicking = false;
+				if (!cursorHovering) {
+					SetButtonHover(false, background, icon);
+					hovering = false;
+					clicking = false;
+				}
 			}
 		}
 		if (clicking) {
-			if (event.type == sf::Event::MouseButtonReleased) {
-				if (!background.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
-				callback();
-			}
+			if (event.type != sf::Event::MouseButtonReleased) return;
+			if (cursorHovering) return;
+
+			callback();
+			clicking = false;
 		}
 		else if (hovering) {
-			if (event.type == sf::Event::MouseButtonPressed) {
-				if (!background.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
-				clicking = true;
-			}
+			if (event.type != sf::Event::MouseButtonPressed) return;
+			if (cursorHovering) return;
+
+			clicking = true;
 		}
 		else {
-			if (event.type == sf::Event::MouseMoved) {
-				if (!background.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-				SetButtonHover(true, background, icon);
-				hovering = true;
-			}
+			if (event.type != sf::Event::MouseMoved) return;
+			if (!cursorHovering) return;
+
+			SetButtonHover(true, background, icon);
+			hovering = true;
 		}
 	}
 
@@ -114,9 +123,9 @@ namespace nk {
 	}
 
 	TitleBar::TitleBar(
-		float height,
-		float buttonWidth,
-		float iconSize,
+		Ratio height,
+		Ratio buttonWidth,
+		Ratio iconSize,
 		const sf::Color& backgroundColor,
 		const sf::Color& iconColor,
 		const sf::Color& iconHoverColor,
@@ -127,8 +136,8 @@ namespace nk {
 		this->iconHoverColor = iconHoverColor;
 		
 		sf::Vector2f backgroundSize {
-			ClientWindow::Get().GetSizeF().x,
-			ClientWindow::Get().GetSizeF().y * height
+			ClientWindow::Get().GetRawSizeF().x,
+			ClientWindow::Get().GetRawSizeF().y * height
 		};
 
 		background.setPosition(0.f, 0.f);
@@ -136,17 +145,17 @@ namespace nk {
 		background.setFillColor(backgroundColor);
 
 		sf::Vector2f buttonBackgroundSize {
-			ClientWindow::Get().GetSizeF().x * buttonWidth,
-			ClientWindow::Get().GetSizeF().y * height
+			ClientWindow::Get().GetRawSizeF().x * buttonWidth,
+			ClientWindow::Get().GetRawSizeF().y * height
 		};
 
 		sf::Vector2f closeBackgroundPosition {
-			ClientWindow::Get().GetSizeF().x * (1 - buttonWidth),
+			ClientWindow::Get().GetRawSizeF().x * (1 - buttonWidth),
 			0.f
 		};
 
 		sf::Vector2f minimizeButtonBackgroundPosition{
-			ClientWindow::Get().GetSizeF().x * (1 - buttonWidth * 2),
+			ClientWindow::Get().GetRawSizeF().x * (1 - buttonWidth * 2),
 			0.f
 		};
 
@@ -177,6 +186,10 @@ namespace nk {
 		minimizeIcon.setPosition(minimizeButtonBackgroundPosition + buttonBackgroundSize / 2.f);
 
 
+	}
+
+	float TitleBar::GetHeight() {
+		return background.getSize().y;
 	}
 
 

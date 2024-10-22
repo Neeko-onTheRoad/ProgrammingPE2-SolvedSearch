@@ -117,11 +117,23 @@ namespace nk {
 		return false;
 	}
 
-	sf::Vector2f ClientWindow::GetSizeF() const {
+	void ClientWindow::SetTitleBarOffset(float titleBarSize) { 
+		this->titleBarSize = titleBarSize;
+	}
+
+	float ClientWindow::GetTitleBarOffset() const {
+		return titleBarSize;
+	}
+
+	sf::Vector2f ClientWindow::GetSize() const {
+		return GetRawSizeF() - sf::Vector2f{ 0.f, titleBarSize };
+	}
+
+	sf::Vector2f ClientWindow::GetRawSizeF() const {
 		return (sf::Vector2f)renderWindow->getSize();
 	}
 
-	sf::Vector2u ClientWindow::GetSize() const {
+	sf::Vector2u ClientWindow::GetRawSize() const {
 		return renderWindow->getSize();
 	}
 

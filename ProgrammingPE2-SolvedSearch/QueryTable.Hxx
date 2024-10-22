@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ClientObject.Hxx"
+#include "ClientWindow.Hxx"
 
 namespace nk {
 
@@ -14,7 +15,11 @@ namespace nk {
 		void Update(const sf::Event& event) override;
 
 	public:
-		QueryTable();
+		QueryTable(
+			float width,
+			float margin,
+			const sf::Color& backgroundColor
+		);
 
 	};
 
