@@ -13,9 +13,10 @@ namespace nk {
 		static sf::Texture MinimizeButton;
 		static sf::Texture SolvedLogo;
 		static sf::Texture SolvedLogoNoBG;
+		static sf::Texture SolvedTierBackground;
 
 		static void LoadIcons();
-
+			
 	};
 
 }

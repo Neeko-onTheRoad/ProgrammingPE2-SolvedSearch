@@ -9,7 +9,7 @@ void BuildScene(ClientWindow& client) {
 	
 	client.AddObject(
 		new Background(
-			AcColors::DarkGray
+			Icons::SolvedTierBackground
 		),
 		Layer::Background
 	);

@@ -7,13 +7,13 @@ namespace nk {
 	class Background : public ClientObject {
 
 	private:
-		sf::RectangleShape backgroundRect;
+		sf::Sprite background;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	public:
-		Background(const sf::Color& color);
+		Background(const sf::Texture& backgroundTexture);
 
 
 	};

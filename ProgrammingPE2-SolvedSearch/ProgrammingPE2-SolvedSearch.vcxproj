@@ -165,6 +165,7 @@
     <ClCompile Include="Fonts.Cxx" />
     <ClCompile Include="Icons.Cxx" />
     <ClCompile Include="Index.Cxx" />
+    <ClCompile Include="QueryTable.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
     <ClCompile Include="LocaleManager.Cxx" />
     <ClCompile Include="TitleBar.Cxx" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Fonts.Hxx" />
     <ClInclude Include="JsonConvertable.Hxx" />
     <ClInclude Include="Icons.Hxx" />
+    <ClInclude Include="QueryTable.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
     <ClInclude Include="LocaleManager.Hxx" />
     <ClInclude Include="TitleBar.Hxx" />

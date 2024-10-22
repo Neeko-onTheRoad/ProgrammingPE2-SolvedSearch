@@ -90,6 +90,9 @@
     <ClCompile Include="ColorManager.Cxx">
       <Filter>소스 파일\System\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="QueryTable.Cxx">
+      <Filter>소스 파일\Client\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="ColorManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryTable.Hxx">
+      <Filter>헤더 파일\Client\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
