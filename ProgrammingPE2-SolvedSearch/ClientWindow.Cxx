@@ -69,11 +69,8 @@ namespace nk {
 					renderWindow->close();
 					return;
 				}
-				if (event.type == sf::Event::LostFocus) {
-					puts("FUCK");
-				}
-				UpdateAll();
 			}
+			UpdateAll();
 
 			renderWindow->clear();
 			RenderAll();

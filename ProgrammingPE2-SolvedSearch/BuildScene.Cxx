@@ -6,7 +6,7 @@ void BuildScene(ClientWindow& client) {
 	
 	using Layer = ClientWindow::Layers;
 
-
+	
 	client.AddObject(
 		new Background(
 			AcColors::DarkGray

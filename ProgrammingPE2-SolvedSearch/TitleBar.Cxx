@@ -12,20 +12,9 @@ namespace nk {
 
 	}
 
-	void TitleBar::SetCloseButtonHover(bool flag) {
-
-		hoveringCloseButton = flag;
-		
-		ColorManager::SetOpacity(closeBackground, flag ? 255 : 0);
-		closeIcon.setColor(flag ? iconHoverColor : iconColor);
-	}
-
-	void TitleBar::SetMinimizeButtonHover(bool flag) {
-
-		hoveringMinimizeButton = flag;
-
-		ColorManager::SetOpacity(minimizeBackground, flag ? 255 : 0);
-		minimizeIcon.setColor(flag ? iconHoverColor : iconColor);
+	void TitleBar::SetButtonHover(bool flag, sf::RectangleShape& background, sf::Sprite& icon) const {
+		ColorManager::SetOpacity(background, flag ? 255 : 0);
+		icon.setColor(flag ? iconHoverColor : iconColor);
 	}
 
 	void TitleBar::UpdateMovement(const sf::Event& event) {
@@ -64,105 +53,62 @@ namespace nk {
 		}
 	}
 
-	void TitleBar::UpdateCloseButton(const sf::Event& event) {
-
-		if (clickingCloseButton) {
-
-			if (event.type == sf::Event::MouseMoved) {
-				if (closeBackground.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-				SetCloseButtonHover(false);
-				clickingCloseButton = false;
-				return;
-			}
-			if (event.type == sf::Event::MouseButtonReleased) {
-				if (!closeBackground.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
-				ClientWindow::Get().Close();
-				return;
-			}
-
-			return;
-
-		}
-		if (hoveringCloseButton) {
-
-			if (event.type == sf::Event::MouseMoved) {
-				if (closeBackground.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-				SetCloseButtonHover(false);
-				clickingCloseButton = false;
-				return;
-			}
-
-			if (event.type == sf::Event::MouseButtonPressed) {
-				if (!closeBackground.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
-				clickingCloseButton = true;
-				return;
-			}
-
-			return;
-
-		}
-
-		if (event.type == sf::Event::MouseMoved) {
-
-			if (!closeBackground.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-			SetCloseButtonHover(true);
-
-		}
-		
+	void TitleBar::UpdateButton(
+		const sf::Event& event,
+		sf::RectangleShape& background,
+		sf::Sprite& icon,
+		bool& hovering,
+		bool& clicking, 
+		void (*callback)()
+	) {
 	
-	}
-
-	void TitleBar::UpdateMinimizeButton(const sf::Event& event) {
-
-		if (clickingMinimizeButton) {
-
+		if (hovering) {
 			if (event.type == sf::Event::MouseMoved) {
-				if (minimizeBackground.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-				SetMinimizeButtonHover(false);
-				clickingMinimizeButton = false;
-				return;
+				if (background.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
+				SetButtonHover(false, background, icon);
+				hovering = false;
+				clicking = false;
 			}
+		}
+		if (clicking) {
 			if (event.type == sf::Event::MouseButtonReleased) {
-				if (!minimizeBackground.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
-				ClientWindow::Get().Minimize();
-				return;
+				if (!background.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
+				callback();
 			}
-
-			return;
-
 		}
-		if (hoveringMinimizeButton) {
-
-			if (event.type == sf::Event::MouseMoved) {
-				if (minimizeBackground.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-				SetMinimizeButtonHover(false);
-				clickingMinimizeButton = false;
-				return;
-			}
-
+		else if (hovering) {
 			if (event.type == sf::Event::MouseButtonPressed) {
-				if (!minimizeBackground.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
-				clickingMinimizeButton = true;
-				return;
+				if (!background.getGlobalBounds().contains((float)event.mouseButton.x, (float)event.mouseButton.y)) return;
+				clicking = true;
 			}
-
-			return;
-
 		}
-
-		if (event.type == sf::Event::MouseMoved) {
-
-			if (!minimizeBackground.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
-			SetMinimizeButtonHover(true);
-
+		else {
+			if (event.type == sf::Event::MouseMoved) {
+				if (!background.getGlobalBounds().contains((float)event.mouseMove.x, (float)event.mouseMove.y)) return;
+				SetButtonHover(true, background, icon);
+				hovering = true;
+			}
 		}
-	
 	}
 
 	void TitleBar::Update(const sf::Event& event) {
 
-		UpdateCloseButton(event);
-		UpdateMinimizeButton(event);
+		UpdateButton(
+			event,
+			closeBackground,
+			closeIcon,
+			hoveringCloseButton,
+			clickingCloseButton,
+			[]() { ClientWindow::Get().Close(); }
+		);
+		UpdateButton(
+			event,
+			minimizeBackground,
+			minimizeIcon,
+			hoveringMinimizeButton,
+			clickingMinimizeButton,
+			[]() { ClientWindow::Get().Minimize(); }
+		);
 		UpdateMovement(event);
 
 	}

@@ -28,12 +28,23 @@ namespace nk {
 		bool hoveringMinimizeButton = false;
 		bool clickingMinimizeButton = false;
 
-		void SetCloseButtonHover(bool flag);
-		void SetMinimizeButtonHover(bool flag);
 
 		void UpdateMovement(const sf::Event& event);
-		void UpdateCloseButton(const sf::Event& event);
-		void UpdateMinimizeButton(const sf::Event& event);
+
+		void SetButtonHover(
+			bool flag,
+			sf::RectangleShape& background,
+			sf::Sprite& icon
+		) const;
+
+		void UpdateButton(
+			const sf::Event& event,
+			sf::RectangleShape& background,
+			sf::Sprite& icon,
+			bool& hovering,
+			bool& clicking,
+			void(*callback)()
+		);
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
