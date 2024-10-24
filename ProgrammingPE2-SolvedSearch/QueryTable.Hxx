@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "QueryDivision.Hxx"
+#include "QueryTagButton.Hxx"
 #include "SolvedAcManager.Hxx"
 
 namespace nk {
@@ -13,11 +13,14 @@ namespace nk {
 		sf::RenderTexture maskedTexture;
 		sf::Sprite resultSpriteBuffer;
 		sf::RectangleShape backgroundMask;
+		sf::RectangleShape centerLine;
 		sf::RenderStates renderStates;
 
-		std::vector<QueryDivision*> divisions;
+		std::vector<QueryTagButton*> queryButtons;
 
 		SolvedAcManager solvedManager;
+
+		float scroll;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -28,10 +31,11 @@ namespace nk {
 		QueryTable(
 			Ratio width,
 			Ratio margin,
-			const sf::Color& backgroundColor
+			Ratio centerLineThickness,
+			Ratio centerLineMargin,
+			const sf::Color& backgroundColor,
+			const sf::Color& centerLineColor
 		);
-
-		void AddDivision(QueryDivision* division);
 
 	};
 

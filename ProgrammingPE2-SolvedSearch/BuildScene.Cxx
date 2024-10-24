@@ -30,12 +30,21 @@ void BuildScene(ClientWindow& client) {
 		Layer::Background
 	);
 
+	QueryTagButton::SetBackgroundColor(AcColors::DarkerGray);
+	QueryTagButton::SetForegroundColor(AcColors::LightGray);
+	QueryTagButton::SetHoverBackgroundColor(AcColors::DarkGray);
+	QueryTagButton::SetHoverForegroundColor(AcColors::LightGray);
+	QueryTagButton::SetClickBackgroundColor(AcColors::LightGray);
+	QueryTagButton::SetClickForegroundColor(AcColors::White);
 
 	client.AddObject(
 		new QueryTable(
 			0.48f,
 			0.02f,
-			ColorManager::SetOpacity(AcColors::DarkerGray, 255)
+			0.001f,
+			0.02f,
+			AcColors::DarkerGray,
+			AcColors::DarkGray
 		),
 		Layer::ObjectBackgrounds
 	);
