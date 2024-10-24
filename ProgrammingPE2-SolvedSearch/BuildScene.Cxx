@@ -33,9 +33,9 @@ void BuildScene(ClientWindow& client) {
 
 	client.AddObject(
 		new QueryTable(
-			0.4f,
+			0.48f,
 			0.02f,
-			ColorManager::SetOpacity(AcColors::DarkerGray, 230)
+			ColorManager::SetOpacity(AcColors::DarkerGray, 255)
 		),
 		Layer::ObjectBackgrounds
 	);

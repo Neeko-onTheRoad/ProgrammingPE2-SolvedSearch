@@ -11,15 +11,15 @@ namespace nk {
 //======================================================================| Members
 
 	private:
-		bool isActivated;
-		bool isNeedRerender;
+		bool isActivated = true;
+		bool isNeedRerender = true;
 
 	public:
 		sf::RenderStates RenderState;
 
 //======================================================================| Methods
 
-	private:
+	public:
 		void UpdateBase(const sf::Event& event);
 		void LateUpdateBase(const sf::Event& event);
 		void DrawBase(sf::RenderTarget& target, sf::RenderStates states);

@@ -2,7 +2,7 @@
 
 namespace nk {
 
-	const std::string SolvedAcManager::URL_SOLVED_AC = "http://solved.ac/api/v3/";
+	const std::string SolvedAcManager::URL_SOLVED_AC = "https://solved.ac/api/v3/";
 	const std::string SolvedAcManager::URI_SEARCH_PROBLEM = "search/problem";
 	const std::string SolvedAcManager::URI_TAG_LIST = "tag/list";
 	const std::string SolvedAcManager::URI_TAG_SHOW = "tag/show";

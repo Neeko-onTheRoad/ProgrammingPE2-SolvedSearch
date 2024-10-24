@@ -112,7 +112,6 @@ namespace nk {
 		}
 
 		curl_slist_free_all(headerSlist);
-
 		return readBuffer;
 
 	}
