@@ -26,7 +26,9 @@ namespace nk {
 		ApiManager apiManager;
 
 		std::set<std::string> tagKeys;
+		std::set<std::string> tagNames;
 		std::unordered_map<std::string, std::string> tagKeyNameTable;
+		std::unordered_map<std::string, std::string> tagNameKeyTable;
 
 //======================================================================| Con/Destructors
 
@@ -40,7 +42,9 @@ namespace nk {
 
 	public:
 		const std::set<std::string>& GetTags() const;
-		const std::string GetTagName(std::string) const;
+		const std::set<std::string>& GetNames() const;
+		const std::string GetTagNameByKey(std::string key) const;
+		const std::string GetTagKeyByName(std::string name) const;
 
 	};
 

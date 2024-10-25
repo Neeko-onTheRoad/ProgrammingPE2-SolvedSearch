@@ -2,6 +2,16 @@
 
 namespace nk {
 
+	sf::Color QueryTagButton::backgroundColor;
+	sf::Color QueryTagButton::foregroundColor;
+	sf::Color QueryTagButton::hoverBackgroundColor;
+	sf::Color QueryTagButton::hoverForegroundColor;
+	sf::Color QueryTagButton::clickBackgroundColor;
+	sf::Color QueryTagButton::clickForegroundColor;
+	Ratio QueryTagButton::textMarginLeft;
+	unsigned QueryTagButton::textSize;
+	sf::Vector2f QueryTagButton::size;
+
 	void QueryTagButton::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		target.draw(background, states);
 		target.draw(name, states);
@@ -9,34 +19,53 @@ namespace nk {
 
 	void QueryTagButton::Update(const sf::Event& event) { 
 	
+		
+
 	}
 
-	QueryTagButton::QueryTagButton(std::string target, sf::Vector2f position) {
+	QueryTagButton::QueryTagButton(std::wstring name, std::string target, sf::Vector2f position) {
 		
+		this->target = target;
+
 		background.setFillColor(backgroundColor);
 		background.setSize(size);
-		background.setPosition(position);
 
+		this->name.setString(name);
+		this->name.setFont(Fonts::NanumSquareRound::Bold);
+		this->name.setCharacterSize(textSize);
+		this->name.setFillColor(foregroundColor);
 
-		name.setString(target);
-		name.setFont(Fonts::NanumSquareRound::Bold);
-		name.setCharacterSize(textSize);
-		name.setColor(foregroundColor);
-
-		sf::Vector2f textPositionDelta = {
-			ClientWindow::Get().GetSize().x * textMarginLeft,
-			size.y / 2 - name.getGlobalBounds().height / 2
-		};
-		name.setPosition(textPositionDelta + position);
-	
+		SetPosition(position);
 	}
 
-	bool QueryTagButton::IsActivated() const {
-		return isActivated;
+	bool QueryTagButton::IsButtonActivated() const {
+		return isButtonActivated;
 	}
 
 	std::string QueryTagButton::GetTarget() const {
+		return target;
+	}
+
+	std::string QueryTagButton::GetName() const {
 		return name.getString();
+	}
+
+	sf::Vector2f QueryTagButton::GetPosition() const {
+		return background.getPosition();
+	}
+
+	void QueryTagButton::SetPosition(sf::Vector2f position) {
+		background.setPosition(position);
+
+		sf::Vector2f textPositionDelta = {
+			textMarginLeft * ClientWindow::Get().GetSize().x,
+			size.y / 2 - this->name.getGlobalBounds().height / 1.5f
+		};
+		this->name.setPosition(textPositionDelta + position);
+	}
+
+	void QueryTagButton::AddPosition(sf::Vector2f delta) {
+		SetPosition(GetPosition() + delta);
 	}
 
 	void QueryTagButton::SetBackgroundColor(const sf::Color& color) {
@@ -63,10 +92,6 @@ namespace nk {
 		clickForegroundColor = color;
 	}
 
-	void QueryTagButton::SetHeight(Ratio height) {
-		QueryTagButton::height = height;
-	}
-
 	void QueryTagButton::SetTextMarginLeft(Ratio margin) {
 		textMarginLeft = margin;
 	}
@@ -76,7 +101,11 @@ namespace nk {
 	}
 
 	void QueryTagButton::SetSize(sf::Vector2f size) {
-		size = size;
+		QueryTagButton::size = size;
+	}
+
+	sf::Vector2f QueryTagButton::GetSize() {
+		return size;
 	}
 
 }

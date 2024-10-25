@@ -2,6 +2,11 @@
 
 namespace nk::Fonts {
 
+	sf::Font NanumSquareRound::Light;
+	sf::Font NanumSquareRound::Regular;
+	sf::Font NanumSquareRound::Bold;
+	sf::Font NanumSquareRound::ExtraBold;
+
 	void LoadFonts() {
 
 		NanumSquareRound::Light.loadFromFile(FontPath + "NanumSquareRoundL.ttf");

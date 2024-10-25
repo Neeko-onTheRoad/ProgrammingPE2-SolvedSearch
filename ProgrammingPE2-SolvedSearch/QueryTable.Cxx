@@ -6,7 +6,6 @@ namespace nk{
 		
 		target.draw(resultSpriteBuffer, states);
 		target.draw(centerLine, states);
-		 
 	}
 
 	void QueryTable::Rerender() {
@@ -14,6 +13,9 @@ namespace nk{
 		maskedTexture.clear(sf::Color::Transparent);
 		maskedTexture.draw(background);
 
+		for (auto& queryButton : queryButtons) {
+			maskedTexture.draw(*queryButton, renderStates);
+		}
 
 		resultSpriteBuffer.setTexture(maskedTexture.getTexture());
 		resultSpriteBuffer.setTextureRect(sf::IntRect(
@@ -27,6 +29,15 @@ namespace nk{
 
 	void QueryTable::Update(const sf::Event& event) {
 		
+		if (event.type == sf::Event::MouseWheelScrolled) {
+			for (auto& queryButton : queryButtons) {
+
+				std::cout << event.mouseWheel.delta ? "1\n" : "";
+				queryButton->AddPosition(sf::Vector2f { 0.f, (float)event.mouseWheel.y });
+
+			}
+		}
+
 		for (auto& queryButton : queryButtons) {
 			queryButton->UpdateBase(event);
 		}
@@ -46,6 +57,7 @@ namespace nk{
 			ClientWindow::Get().GetSize().x * width,
 			ClientWindow::Get().GetSize().y * (1 - margin * 2)
 		};
+
 
 		float marginPosition = ClientWindow::Get().GetSize().y * margin;
 
@@ -75,10 +87,32 @@ namespace nk{
 		centerLine.setPosition(centerLinePosition);
 		centerLine.setFillColor(centerLineColor);
 
-	}
 
-	void QueryTable::AddDivision(QueryDivision* division) {
-		divisions.push_back(division);
+		QueryTagButton::SetBackgroundColor(AcColors::DarkerGray);
+		QueryTagButton::SetForegroundColor(AcColors::LightGray);
+		QueryTagButton::SetHoverBackgroundColor(AcColors::DarkGray);
+		QueryTagButton::SetHoverForegroundColor(AcColors::LightGray);
+		QueryTagButton::SetClickBackgroundColor(AcColors::LightGray);
+		QueryTagButton::SetClickForegroundColor(AcColors::White);
+		QueryTagButton::SetTextMarginLeft(0.02f);
+		QueryTagButton::SetTextSize(23);
+		QueryTagButton::SetSize({
+			background.getSize().x / 2,
+			background.getSize().y / 20
+		});
+
+		sf::Vector2f buttonOrigin = {
+			background.getPosition().x + background.getSize().x / 2,
+			background.getPosition().y
+		};
+
+		sf::Vector2f offset = { 0, 0 };
+
+		for (auto& name : solvedManager.GetNames()) {
+			queryButtons.push_back(new QueryTagButton(LocaleManager::Utf8ToWString(name), solvedManager.GetTagKeyByName(name), buttonOrigin + offset));
+			offset.y += QueryTagButton::GetSize().y;
+		}
+
 	}
 
 }

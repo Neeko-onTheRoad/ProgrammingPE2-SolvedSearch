@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include "AcColors.Hxx"
+#include "LocaleManager.Hxx"
 #include "QueryTagButton.Hxx"
 #include "SolvedAcManager.Hxx"
 
@@ -20,7 +22,7 @@ namespace nk {
 
 		SolvedAcManager solvedManager;
 
-		float scroll;
+		float scroll = 0.f;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

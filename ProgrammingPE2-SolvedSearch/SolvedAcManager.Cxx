@@ -10,7 +10,6 @@ namespace nk {
 	SolvedAcManager::SolvedAcManager() : apiManager(URL_SOLVED_AC) {
 
 		SetConsoleOutputCP(CP_UTF8);
-
 		InitTags();
 
 	}
@@ -34,7 +33,9 @@ namespace nk {
 				std::string name = item["displayNames"][0]["name"];
 
 				tagKeys.insert(key);
+				tagNames.insert(name);
 				tagKeyNameTable[key] = name;
+				tagNameKeyTable[name] = key;
 			}
 
 		}
@@ -45,9 +46,17 @@ namespace nk {
 	const std::set<std::string>& SolvedAcManager::GetTags() const {
 		return tagKeys;
 	}
+
+	const std::set<std::string>& SolvedAcManager::GetNames() const {
+		return tagNames;
+	}
 	
-	const std::string SolvedAcManager::GetTagName(std::string tag) const {
+	const std::string SolvedAcManager::GetTagNameByKey(std::string tag) const {
 		return tagKeyNameTable.at(tag);
+	}
+
+	const std::string SolvedAcManager::GetTagKeyByName(std::string name) const {
+		return tagNameKeyTable.at(name);
 	}
 
 }
