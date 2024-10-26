@@ -7,13 +7,17 @@
 #include <Windows.h>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
+
 #include "Fonts.Hxx"
 #include "Icons.Hxx"
 #include "ClientObject.Hxx"
 
-namespace nk {
+#include "TitleBar.Hxx"
+#include "Background.Hxx"
+#include "QueryTable.Hxx"
 
-	typedef float Ratio;
+
+namespace nk {
 
 	class ClientWindow {
 
@@ -54,7 +58,7 @@ namespace nk {
 		sf::Event event;
 		ObjectLayers objectLayers;
 		WNDPROC originalWindow;
-		Ratio titleBarSize;
+		float titleBarSize;
 
 //======================================================================| Con/Destroctors
 
@@ -69,7 +73,8 @@ namespace nk {
 		void RenderAll() const;
 
 	public:
-		void StartAndWaitForEnd();
+		void BuildScene();
+		void Start();
 
 		void AddObject(ClientObject* object, Layers layer);
 		bool RemoveObject(ClientObject* object);

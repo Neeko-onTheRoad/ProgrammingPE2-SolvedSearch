@@ -123,9 +123,9 @@ namespace nk {
 	}
 
 	TitleBar::TitleBar(
-		Ratio height,
-		Ratio buttonWidth,
-		Ratio iconSize,
+		float height,
+		float buttonWidth,
+		float iconSize,
 		const sf::Color& backgroundColor,
 		const sf::Color& iconColor,
 		const sf::Color& iconHoverColor,

@@ -1,44 +1,41 @@
-#include "BuildScene.Hxx"
+#include "ClientWindow.Hxx"
 
-using namespace nk;
-
-void BuildScene(ClientWindow& client) {
+namespace nk {
+	void ClientWindow::BuildScene() {
 	
-	using Layer = ClientWindow::Layers;
-	
-	TitleBar* titleBar = new TitleBar(
-		0.04f, // height
-		0.035f, // buttonWidth
-		0.43f, // iconSize
-		AcColors::DarkerGray, // backgroundColor
-		AcColors::LightGray, // iconColor
-		AcColors::White, // iconHoverColor
-		AcColors::LightGray // iconHoverBackgroundColor
-	);
-
-	client.AddObject(
-		titleBar,
-		Layer::TitleBar
-	);
-	client.SetTitleBarOffset(titleBar->GetHeight());
-
-	client.AddObject(
-		new Background(
-		Icons::SolvedTierBackground // backgroundTexture
-	),
-		Layer::Background
-	);
-
-	client.AddObject(
-		new QueryTable(
-			0.48f, // width
-			0.02f, // margin
-			0.001f, // centerLineThickness
-			0.02f, // centerLineMargin
+		nk::TitleBar* titleBar = new nk::TitleBar(
+			0.04f, // height
+			0.035f, // buttonWidth
+			0.43f, // iconSize
 			AcColors::DarkerGray, // backgroundColor
-			AcColors::DarkGray // centerLineColor
-		),
-		Layer::ObjectBackgrounds
-	);
+			AcColors::LightGray, // iconColor
+			AcColors::White, // iconHoverColor
+			AcColors::LightGray // iconHoverBackgroundColor
+		);
 
+		AddObject(
+			titleBar,
+			Layers::TitleBar
+		);
+		SetTitleBarOffset(titleBar->GetHeight());
+
+		AddObject(
+			new nk::Background(
+				Icons::SolvedTierBackground // backgroundTexture
+			),
+			Layers::Background
+		);
+
+		AddObject(
+			new QueryTable(
+				0.48f, // width
+				0.02f, // margin
+				0.001f, // centerLineThickness
+				0.02f, // centerLineMargin
+				AcColors::DarkerGray, // backgroundColor
+				AcColors::DarkGray // centerLineColor
+			),
+			Layers::ObjectBackgrounds
+		);
+	}
 }

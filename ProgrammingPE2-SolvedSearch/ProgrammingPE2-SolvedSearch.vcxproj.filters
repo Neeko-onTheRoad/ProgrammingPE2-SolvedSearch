@@ -69,9 +69,6 @@
     <ClCompile Include="BuildScene.Cxx">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="BuildScene.Hxx">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
     <ClCompile Include="ClientObject.Cxx">
       <Filter>소스 파일\Client</Filter>
     </ClCompile>

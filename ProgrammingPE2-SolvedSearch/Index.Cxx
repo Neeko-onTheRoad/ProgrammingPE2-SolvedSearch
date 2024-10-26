@@ -1,10 +1,10 @@
-#include "BuildScene.Hxx"
+#include "ClientWindow.Hxx"
 
 int main() {
 	
 	nk::ClientWindow client;
-	BuildScene(client);
-	client.StartAndWaitForEnd();
+	client.BuildScene();
+	client.Start();
 
 	return EXIT_SUCCESS;
 

@@ -158,7 +158,6 @@
     <ClCompile Include="ApiManager.Cxx" />
     <ClCompile Include="Background.Cxx" />
     <ClCompile Include="BuildScene.Cxx" />
-    <ClCompile Include="BuildScene.Hxx" />
     <ClCompile Include="ClientObject.Cxx" />
     <ClCompile Include="ClientWindow.Cxx" />
     <ClCompile Include="ColorManager.Cxx" />

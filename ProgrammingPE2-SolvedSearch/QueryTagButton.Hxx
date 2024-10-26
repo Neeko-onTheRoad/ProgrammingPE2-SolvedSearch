@@ -15,7 +15,7 @@ namespace nk {
 		static sf::Color hoverForegroundColor;
 		static sf::Color clickBackgroundColor;
 		static sf::Color clickForegroundColor;
-		static Ratio textMarginLeft;
+		static float textMarginLeft;
 		static unsigned textSize;
 		static sf::Vector2f size;
 
@@ -49,7 +49,7 @@ namespace nk {
 		static void SetHoverForegroundColor(const sf::Color& color);
 		static void SetClickBackgroundColor(const sf::Color& color);
 		static void SetClickForegroundColor(const sf::Color& color);
-		static void SetTextMarginLeft(Ratio margin);
+		static void SetTextMarginLeft(float margin);
 		static void SetTextSize(unsigned size);
 		static void SetSize(sf::Vector2f size);
 

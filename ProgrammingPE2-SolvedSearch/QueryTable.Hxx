@@ -18,7 +18,6 @@ namespace nk {
 		sf::RectangleShape centerLine;
 		sf::RenderStates renderStates;
 		sf::Vector2f queryButtonOrigin;
-		float queryButtonBottom;
 
 		std::vector<QueryTagButton*> queryButtons;
 
@@ -33,10 +32,10 @@ namespace nk {
 
 	public:
 		QueryTable(
-			Ratio width,
-			Ratio margin,
-			Ratio centerLineThickness,
-			Ratio centerLineMargin,
+			float width,
+			float margin,
+			float centerLineThickness,
+			float centerLineMargin,
 			const sf::Color& backgroundColor,
 			const sf::Color& centerLineColor
 		);

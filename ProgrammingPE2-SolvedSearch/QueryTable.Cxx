@@ -1,3 +1,4 @@
+
 #include "QueryTable.Hxx"
 
 namespace nk{
@@ -31,10 +32,27 @@ namespace nk{
 		
 		if (event.type == sf::Event::MouseWheelScrolled) {
 			
-			float newScroll = scroll + 50 * event.mouseWheelScroll.delta;
+			float newScroll = scroll + 100 * event.mouseWheelScroll.delta;
 
 			if (newScroll > 0.f) newScroll = 0.f;
-			else if (newScroll < -queryButtonBottom) newScroll = -queryButtonBottom;
+			else {
+				
+				float bottom = background.getPosition().y + background.getSize().y;
+				float nowBottom =
+					queryButtons.back()->GetPosition().y +
+					QueryTagButton::GetSize().y;
+
+				std::cout << bottom << " " << nowBottom << std::endl;
+
+				if (bottom - newScroll + scroll > nowBottom) {
+					float newScrollTemp =
+						background.getSize().y -
+						QueryTagButton::GetSize().y * queryButtons.size();
+
+					newScroll = newScrollTemp;
+				}
+
+			}
 
 			if (scroll != newScroll) {
 				scroll = newScroll;
@@ -45,8 +63,6 @@ namespace nk{
 					sf::Vector2f position = queryButtonOrigin + sf::Vector2(
 						0.f, QueryTagButton::GetSize().y * i + scroll
 					);
-
-					if (i == 0) std::cout << position.y << std::endl;
 
 					queryButton->SetPosition(position);
 				}
@@ -62,10 +78,10 @@ namespace nk{
 	}
 
 	QueryTable::QueryTable(
-		Ratio width,
-		Ratio margin,
-		Ratio centerLineThickness,
-		Ratio centerLineMargin,
+		float width,
+		float margin,
+		float centerLineThickness,
+		float centerLineMargin,
 		const sf::Color& backgroundColor,
 		const sf::Color& centerLineColor
 	) {
@@ -133,8 +149,6 @@ namespace nk{
 			));
 			offset.y += QueryTagButton::GetSize().y;
 		}
-
-		queryButtonBottom = offset.y + QueryTagButton::GetSize().y;
 
 	}
 

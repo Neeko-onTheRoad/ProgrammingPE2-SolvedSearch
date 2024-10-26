@@ -60,8 +60,7 @@ namespace nk {
 		delete renderWindow;
 	}
 
-
-	void ClientWindow::StartAndWaitForEnd() {
+	void ClientWindow::Start() {
 
 		while (renderWindow->isOpen()) {
 

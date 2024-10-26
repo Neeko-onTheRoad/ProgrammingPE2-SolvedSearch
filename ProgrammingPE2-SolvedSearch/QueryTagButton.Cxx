@@ -8,7 +8,7 @@ namespace nk {
 	sf::Color QueryTagButton::hoverForegroundColor;
 	sf::Color QueryTagButton::clickBackgroundColor;
 	sf::Color QueryTagButton::clickForegroundColor;
-	Ratio QueryTagButton::textMarginLeft;
+	float QueryTagButton::textMarginLeft;
 	unsigned QueryTagButton::textSize;
 	sf::Vector2f QueryTagButton::size;
 
@@ -92,7 +92,7 @@ namespace nk {
 		clickForegroundColor = color;
 	}
 
-	void QueryTagButton::SetTextMarginLeft(Ratio margin) {
+	void QueryTagButton::SetTextMarginLeft(float margin) {
 		textMarginLeft = margin;
 	}
 
