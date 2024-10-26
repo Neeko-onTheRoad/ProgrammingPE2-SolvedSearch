@@ -22,7 +22,10 @@ namespace nk {
 		sf::Text name;
 		std::string target;
 		sf::RectangleShape background;
+
 		bool isButtonActivated = true;
+		bool hovering = false;
+		bool clicking = false;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
