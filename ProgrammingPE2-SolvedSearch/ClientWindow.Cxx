@@ -70,8 +70,8 @@ namespace nk {
 					renderWindow->close();
 					return;
 				}
+				UpdateAll();
 			}
-			UpdateAll();
 
 			renderWindow->clear();
 			RenderAll();

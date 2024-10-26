@@ -30,11 +30,28 @@ namespace nk{
 	void QueryTable::Update(const sf::Event& event) {
 		
 		if (event.type == sf::Event::MouseWheelScrolled) {
-			for (auto& queryButton : queryButtons) {
+			
+			float newScroll = scroll + 50 * event.mouseWheelScroll.delta;
 
-				std::cout << event.mouseWheel.delta ? "1\n" : "";
-				queryButton->AddPosition(sf::Vector2f { 0.f, (float)event.mouseWheel.y });
+			if (newScroll > 0.f) newScroll = 0.f;
+			else if (newScroll < -queryButtonBottom) newScroll = -queryButtonBottom;
 
+			if (scroll != newScroll) {
+				scroll = newScroll;
+
+				for (int i = 0; i < queryButtons.size(); i++) {
+					QueryTagButton* queryButton = queryButtons[i];
+				
+					sf::Vector2f position = queryButtonOrigin + sf::Vector2(
+						0.f, QueryTagButton::GetSize().y * i + scroll
+					);
+
+					if (i == 0) std::cout << position.y << std::endl;
+
+					queryButton->SetPosition(position);
+				}
+
+				isNeedRerender = true;
 			}
 		}
 
@@ -101,7 +118,7 @@ namespace nk{
 			background.getSize().y / 20
 		});
 
-		sf::Vector2f buttonOrigin = {
+		queryButtonOrigin = {
 			background.getPosition().x + background.getSize().x / 2,
 			background.getPosition().y
 		};
@@ -109,9 +126,15 @@ namespace nk{
 		sf::Vector2f offset = { 0, 0 };
 
 		for (auto& name : solvedManager.GetNames()) {
-			queryButtons.push_back(new QueryTagButton(LocaleManager::Utf8ToWString(name), solvedManager.GetTagKeyByName(name), buttonOrigin + offset));
+			queryButtons.push_back(new QueryTagButton(
+				LocaleManager::Utf8ToWString(name),
+				solvedManager.GetTagKeyByName(name),
+				queryButtonOrigin + offset
+			));
 			offset.y += QueryTagButton::GetSize().y;
 		}
+
+		queryButtonBottom = offset.y + QueryTagButton::GetSize().y;
 
 	}
 

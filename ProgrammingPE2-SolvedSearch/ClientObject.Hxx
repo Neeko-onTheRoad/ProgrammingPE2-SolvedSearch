@@ -10,7 +10,7 @@ namespace nk {
 
 //======================================================================| Members
 
-	private:
+	protected:
 		bool isActivated = true;
 		bool isNeedRerender = true;
 

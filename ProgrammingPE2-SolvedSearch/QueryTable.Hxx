@@ -17,6 +17,8 @@ namespace nk {
 		sf::RectangleShape backgroundMask;
 		sf::RectangleShape centerLine;
 		sf::RenderStates renderStates;
+		sf::Vector2f queryButtonOrigin;
+		float queryButtonBottom;
 
 		std::vector<QueryTagButton*> queryButtons;
 
