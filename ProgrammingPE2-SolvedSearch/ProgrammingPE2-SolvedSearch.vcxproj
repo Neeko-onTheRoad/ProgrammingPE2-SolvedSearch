@@ -168,6 +168,7 @@
     <ClCompile Include="QueryTable.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
     <ClCompile Include="LocaleManager.Cxx" />
+    <ClCompile Include="TierSlide.Cxx" />
     <ClCompile Include="TitleBar.Cxx" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +185,7 @@
     <ClInclude Include="QueryTable.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
     <ClInclude Include="LocaleManager.Hxx" />
+    <ClInclude Include="TierSlide.Hxx" />
     <ClInclude Include="TitleBar.Hxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
