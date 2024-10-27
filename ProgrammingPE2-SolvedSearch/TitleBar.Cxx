@@ -65,17 +65,17 @@ namespace nk {
 		bool cursorHovering = background
 			.getGlobalBounds()
 			.contains(
-				(float)event.mouseMove.x,
-				(float)event.mouseMove.y
+				event.mouseMove.x,
+				event.mouseMove.y
 			);
 
 		if (hovering) {
-			if (event.type == sf::Event::MouseMoved) {
-				if (!cursorHovering) {
-					SetButtonHover(false, background, icon);
-					hovering = false;
-					clicking = false;
-				}
+			bool mouseMoved = event.type == sf::Event::MouseMoved;
+
+			if (mouseMoved && !cursorHovering) {
+				SetButtonHover(false, background, icon);
+				hovering = false;
+				clicking = false;
 			}
 		}
 		if (clicking) {

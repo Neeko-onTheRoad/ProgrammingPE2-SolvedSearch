@@ -19,7 +19,32 @@ namespace nk {
 
 	void QueryTagButton::Update(const sf::Event& event) { 
 	
-		
+		float mouseXPos;
+		float mouseYPos;
+
+		if (event.type == sf::Event::MouseWheelScrolled) {
+			mouseXPos = event.mouseWheelScroll.x;
+			mouseYPos = event.mouseWheelScroll.y;
+		}
+		else {
+			mouseXPos = event.mouseButton.x;
+			mouseYPos = event.mouseButton.y;
+		}
+
+		bool cursorHovering = background
+			.getGlobalBounds()
+			.contains(
+				mouseXPos,
+				mouseYPos
+			);
+
+		if (hovering) {
+			bool mouseMoved = event.type == sf::Event::MouseMoved;
+
+			if (mouseMoved && !cursorHovering) {
+				
+			}
+		}
 
 	}
 
