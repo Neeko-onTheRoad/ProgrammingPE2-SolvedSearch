@@ -8,6 +8,8 @@
 
 namespace nk {
 
+	class QueryTagButton;
+
 	class QueryTable : public ClientObject {
 
 	private:

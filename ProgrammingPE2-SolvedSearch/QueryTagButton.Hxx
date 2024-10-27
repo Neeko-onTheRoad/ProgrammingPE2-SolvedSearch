@@ -27,6 +27,11 @@ namespace nk {
 		bool hovering = false;
 		bool clicking = false;
 
+	private:
+		void SetVisualDefault();
+		void SetVisualHover();
+		void SetVisualClick();
+
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 		void Update(const sf::Event& event) override;

@@ -34,7 +34,10 @@ namespace nk {
 
 	public:
 		void SetActive(bool active);
+		void SetNeedRerender(bool needRerender);
+
 		bool IsActive() const;
+		bool IsNeedRerender() const;
 		
 	};
 

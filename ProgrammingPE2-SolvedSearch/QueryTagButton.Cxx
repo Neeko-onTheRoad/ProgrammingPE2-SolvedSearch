@@ -12,23 +12,45 @@ namespace nk {
 	unsigned QueryTagButton::textSize;
 	sf::Vector2f QueryTagButton::size;
 
+	void QueryTagButton::SetVisualDefault() {
+		background.setFillColor(backgroundColor);
+		name.setFillColor(foregroundColor);
+		isNeedRerender = true;
+	}
+
+	void QueryTagButton::SetVisualHover() {
+		background.setFillColor(hoverBackgroundColor);
+		name.setFillColor(hoverForegroundColor);
+		isNeedRerender = true;
+	}
+
+	void QueryTagButton::SetVisualClick() {
+		background.setFillColor(clickBackgroundColor);
+		name.setFillColor(clickForegroundColor);
+		isNeedRerender = true;
+	}
+
 	void QueryTagButton::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		target.draw(background, states);
 		target.draw(name, states);
 	}
 
 	void QueryTagButton::Update(const sf::Event& event) { 
-	
+
 		float mouseXPos;
 		float mouseYPos;
 
 		if (event.type == sf::Event::MouseWheelScrolled) {
-			mouseXPos = event.mouseWheelScroll.x;
-			mouseYPos = event.mouseWheelScroll.y;
+			mouseXPos = static_cast<float>(event.mouseWheelScroll.x);
+			mouseYPos = static_cast<float>(event.mouseWheelScroll.y);
+		}
+		else if (event.type == sf::Event::MouseMoved) {
+			mouseXPos = static_cast<float>(event.mouseMove.x);
+			mouseYPos = static_cast<float>(event.mouseMove.y);
 		}
 		else {
-			mouseXPos = event.mouseButton.x;
-			mouseYPos = event.mouseButton.y;
+			mouseXPos = static_cast<float>(event.mouseButton.x);
+			mouseYPos = static_cast<float>(event.mouseButton.y);
 		}
 
 		bool cursorHovering = background
@@ -42,8 +64,42 @@ namespace nk {
 			bool mouseMoved = event.type == sf::Event::MouseMoved;
 
 			if (mouseMoved && !cursorHovering) {
-				
+				if (isButtonActivated) {
+					SetVisualDefault();
+				}
+				else {
+					SetVisualHover();
+				}
+				hovering = false;
+				clicking = false;
 			}
+		}
+		if (clicking) {
+			if (event.type != sf::Event::MouseButtonReleased) return;
+			if (!cursorHovering) return;
+
+			isButtonActivated = !isButtonActivated;
+			if (isButtonActivated) {
+				SetVisualDefault();
+			}
+			else {
+				SetVisualHover();
+			}
+			clicking = false;
+		}
+		else if (hovering) {
+			if (event.type != sf::Event::MouseButtonPressed) return;
+			if (!cursorHovering) return;
+
+			SetVisualClick();
+			clicking = true;
+		}
+		else {
+			if (event.type != sf::Event::MouseMoved) return;
+			if (!cursorHovering) return;
+
+			SetVisualHover();
+			hovering = true;
 		}
 
 	}

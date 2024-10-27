@@ -46,8 +46,16 @@ namespace nk {
 		isActivated = active;
 	}
 
+	void ClientObject::SetNeedRerender(bool needRerender) {
+		isNeedRerender = true;
+	}
+
 	bool ClientObject::IsActive() const {
 		return isActivated;
+	}
+
+	bool ClientObject::IsNeedRerender() const {
+		return isNeedRerender;
 	}
 
 }

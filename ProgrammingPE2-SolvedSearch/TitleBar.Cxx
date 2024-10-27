@@ -65,8 +65,8 @@ namespace nk {
 		bool cursorHovering = background
 			.getGlobalBounds()
 			.contains(
-				event.mouseMove.x,
-				event.mouseMove.y
+				static_cast<float>(event.mouseMove.x),
+				static_cast<float>(event.mouseMove.y)
 			);
 
 		if (hovering) {

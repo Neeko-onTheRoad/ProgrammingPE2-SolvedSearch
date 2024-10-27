@@ -29,7 +29,7 @@ namespace nk{
 	}
 
 	void QueryTable::Update(const sf::Event& event) {
-		
+
 		if (event.type == sf::Event::MouseWheelScrolled) {
 			
 			float newScroll = scroll + 100 * event.mouseWheelScroll.delta;
@@ -41,8 +41,6 @@ namespace nk{
 				float nowBottom =
 					queryButtons.back()->GetPosition().y +
 					QueryTagButton::GetSize().y;
-
-				std::cout << bottom << " " << nowBottom << std::endl;
 
 				if (bottom - newScroll + scroll > nowBottom) {
 					float newScrollTemp =
@@ -73,6 +71,10 @@ namespace nk{
 
 		for (auto& queryButton : queryButtons) {
 			queryButton->UpdateBase(event);
+			if (queryButton->IsNeedRerender()) {
+				isNeedRerender = true;
+				queryButton->SetNeedRerender(false);
+			}
 		}
 
 	}
