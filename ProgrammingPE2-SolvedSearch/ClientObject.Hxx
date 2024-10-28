@@ -20,6 +20,7 @@ namespace nk {
 //======================================================================| Methods
 
 	public:
+		void RerenderBase();
 		void UpdateBase(const sf::Event& event);
 		void LateUpdateBase(const sf::Event& event);
 		void DrawBase(sf::RenderTarget& target, sf::RenderStates states);

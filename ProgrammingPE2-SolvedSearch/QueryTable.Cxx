@@ -15,7 +15,7 @@ namespace nk{
 		maskedTexture.draw(background);
 
 		for (auto& queryButton : queryButtons) {
-			maskedTexture.draw(*queryButton, renderStates);
+			queryButton->DrawBase(maskedTexture, renderStates);
 		}
 
 		resultSpriteBuffer.setTexture(maskedTexture.getTexture());
@@ -73,7 +73,6 @@ namespace nk{
 			queryButton->UpdateBase(event);
 			if (queryButton->IsNeedRerender()) {
 				isNeedRerender = true;
-				queryButton->SetNeedRerender(false);
 			}
 		}
 
@@ -106,7 +105,10 @@ namespace nk{
 			sf::BlendMode::Add
 		);
 
-		maskedTexture.create(ClientWindow::Get().GetRawSize().x, ClientWindow::Get().GetRawSize().y);
+		maskedTexture.create(
+			ClientWindow::Get().GetRawSize().x,
+			ClientWindow::Get().GetRawSize().y
+		);
 		
 		sf::Vector2f centerLineSize = {
 			centerLineThickness * ClientWindow::Get().GetSize().x,
@@ -129,6 +131,9 @@ namespace nk{
 		QueryTagButton::SetHoverForegroundColor(AcColors::LightGray);
 		QueryTagButton::SetClickBackgroundColor(AcColors::LightGray);
 		QueryTagButton::SetClickForegroundColor(AcColors::White);
+		QueryTagButton::SetActivatedBackgroundColor(AcColors::Hilight);
+		QueryTagButton::SetActivatedForegroundColor(AcColors::White);
+
 		QueryTagButton::SetTextMarginLeft(0.02f);
 		QueryTagButton::SetTextSize(23);
 		QueryTagButton::SetSize({

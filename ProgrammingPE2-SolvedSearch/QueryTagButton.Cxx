@@ -8,6 +8,8 @@ namespace nk {
 	sf::Color QueryTagButton::hoverForegroundColor;
 	sf::Color QueryTagButton::clickBackgroundColor;
 	sf::Color QueryTagButton::clickForegroundColor;
+	sf::Color QueryTagButton::activatedBackgroundColor;
+	sf::Color QueryTagButton::activatedForegroundColor;
 	float QueryTagButton::textMarginLeft;
 	unsigned QueryTagButton::textSize;
 	sf::Vector2f QueryTagButton::size;
@@ -30,9 +32,15 @@ namespace nk {
 		isNeedRerender = true;
 	}
 
+	void QueryTagButton::SetVisualActivated() {
+		background.setFillColor(activatedBackgroundColor);
+		name.setFillColor(activatedForegroundColor);
+		isNeedRerender = true;
+	}
+
 	void QueryTagButton::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		target.draw(background, states);
-		target.draw(name, states);
+		target.draw(name);
 	}
 
 	void QueryTagButton::Update(const sf::Event& event) { 
@@ -61,14 +69,17 @@ namespace nk {
 			);
 
 		if (hovering) {
-			bool mouseMoved = event.type == sf::Event::MouseMoved;
+			bool mouseMoved =
+				event.type == sf::Event::MouseMoved ||
+				event.type == sf::Event::MouseWheelScrolled;
+
 
 			if (mouseMoved && !cursorHovering) {
 				if (isButtonActivated) {
 					SetVisualDefault();
 				}
 				else {
-					SetVisualHover();
+					SetVisualActivated();
 				}
 				hovering = false;
 				clicking = false;
@@ -83,7 +94,7 @@ namespace nk {
 				SetVisualDefault();
 			}
 			else {
-				SetVisualHover();
+				SetVisualActivated();
 			}
 			clicking = false;
 		}
@@ -91,14 +102,28 @@ namespace nk {
 			if (event.type != sf::Event::MouseButtonPressed) return;
 			if (!cursorHovering) return;
 
-			SetVisualClick();
+			if (isButtonActivated) {
+				SetVisualClick();
+			}
+			else {
+				SetVisualHover();
+			}
 			clicking = true;
 		}
 		else {
-			if (event.type != sf::Event::MouseMoved) return;
+			bool mouseMoved =
+				event.type == sf::Event::MouseMoved ||
+				event.type == sf::Event::MouseWheelScrolled;
+
+			if (!mouseMoved) return;
 			if (!cursorHovering) return;
 
-			SetVisualHover();
+			if (isButtonActivated) {
+				SetVisualHover();
+			}
+			else {
+				SetVisualClick();
+			}
 			hovering = true;
 		}
 
@@ -171,6 +196,14 @@ namespace nk {
 
 	void QueryTagButton::SetClickForegroundColor(const sf::Color& color) {
 		clickForegroundColor = color;
+	}
+
+	void QueryTagButton::SetActivatedBackgroundColor(const sf::Color& color) {
+		activatedBackgroundColor = color;
+	}
+
+	void QueryTagButton::SetActivatedForegroundColor(const sf::Color& color) {
+		activatedForegroundColor = color;
 	}
 
 	void QueryTagButton::SetTextMarginLeft(float margin) {

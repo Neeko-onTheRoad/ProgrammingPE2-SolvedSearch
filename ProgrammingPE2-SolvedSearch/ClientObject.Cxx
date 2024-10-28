@@ -2,7 +2,12 @@
 
 namespace nk {
 
-	void ClientObject::UpdateBase(const sf::Event& event) {
+    void ClientObject::RerenderBase() {
+		Rerender();
+		isNeedRerender = false;
+	}
+
+    void ClientObject::UpdateBase(const sf::Event& event) {
 
 		if (!isActivated) return;
 		Update(event);
@@ -21,8 +26,7 @@ namespace nk {
 		if (!isActivated) return;
 
 		if (isNeedRerender) {
-			Rerender();
-			isNeedRerender = false;
+			RerenderBase();
 		}
 
 		draw(target, CombineRenderStates(RenderState, states));

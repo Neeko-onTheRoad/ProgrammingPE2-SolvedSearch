@@ -53,7 +53,7 @@ namespace nk {
 
 //======================================================================| Members
 
-	private:
+	public:
 		sf::RenderWindow* renderWindow;
 		sf::Event event;
 		ObjectLayers objectLayers;
