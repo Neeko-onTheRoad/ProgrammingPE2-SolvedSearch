@@ -2,6 +2,27 @@
 
 namespace nk {
 	void ClientWindow::BuildScene() {
+
+		sf::RenderWindow loadingScreen(
+			sf::VideoMode(800, 100),
+			"Loading",
+			sf::Style::None,
+			sf::ContextSettings(0, 0, 1)
+		);
+
+		sf::Text loadingText;
+		loadingText.setFont(Fonts::NanumSquareRound::ExtraBold);
+		loadingText.setString("Loading...");
+		loadingText.setFillColor(AcColors::LightGray);
+		loadingText.setOrigin(
+			loadingText.getGlobalBounds().width / 2,
+			loadingText.getGlobalBounds().height / 2
+		);
+		loadingText.setPosition(400, 50);
+
+		loadingScreen.clear(AcColors::DarkGray);
+		loadingScreen.draw(loadingText);
+		loadingScreen.display();
 	
 		nk::TitleBar* titleBar = new nk::TitleBar(
 			0.04f, // height

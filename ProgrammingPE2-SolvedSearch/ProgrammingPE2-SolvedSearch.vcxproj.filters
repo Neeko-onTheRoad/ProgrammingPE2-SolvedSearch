@@ -93,6 +93,9 @@
     <ClCompile Include="QueryTagButton.Cxx">
       <Filter>소스 파일\Client\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="TierSlide.Cxx">
+      <Filter>소스 파일\Client\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="QueryTagButton.Hxx">
       <Filter>헤더 파일\Client\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TierSlide.Hxx">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
