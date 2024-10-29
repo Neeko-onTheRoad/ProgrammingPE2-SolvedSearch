@@ -2,9 +2,63 @@
 
 namespace nk {
 
+	void QueryButton::SetVisualDefault() {
+		background.setFillColor(backgroundColor);
+		name.setFillColor(foregroundColor);
+	}
+
+	void QueryButton::SetVisualHover() {
+		background.setFillColor(hoverBackgroundColor);
+		name.setFillColor(hoverForegroundColor);
+	}
+
+	void QueryButton::SetVisualClick() {
+		background.setFillColor(clickBackgroundColor);
+		name.setFillColor(clickForegroundColor);
+	}
+
+	void QueryButton::Search() {
+		
+	}
+
 	void QueryButton::Update(const sf::Event& event) {
 
-		
+		bool cursorHovering = background
+			.getGlobalBounds()
+			.contains(
+				static_cast<float>(event.mouseMove.x),
+				static_cast<float>(event.mouseMove.y)
+			);
+
+		if (hovering) {
+			bool mouseMoved = event.type == sf::Event::MouseMoved;
+
+			if (mouseMoved && !cursorHovering) {
+				SetVisualDefault();
+				hovering = false;
+				clicking = false;
+			}
+		}
+		if (clicking) {
+			if (event.type != sf::Event::MouseButtonReleased) return;
+			
+			SetVisualHover();
+			Search();
+			clicking = false;
+		}
+		else if (hovering) {
+			if (event.type != sf::Event::MouseButtonPressed) return;
+
+			SetVisualClick();
+			clicking = true;
+		}
+		else {
+			if (event.type != sf::Event::MouseMoved) return;
+			if (!cursorHovering) return;
+
+			SetVisualHover();
+			hovering = true;
+		}
 
 	}
 
@@ -19,7 +73,6 @@ namespace nk {
 		QueryTable* queryTable,
 		sf::Vector2f size,
 		float yPos,
-		float outlineThickness,
 		unsigned fontSize,
 		sf::Color backgroundColor,
 		sf::Color foregroundColor,
@@ -52,8 +105,6 @@ namespace nk {
 		background.setOrigin(background.getSize() / 2.f);
 		background.setPosition(position);
 		background.setFillColor(backgroundColor);
-		background.setOutlineColor(foregroundColor);
-		background.setOutlineThickness(outlineThickness);
 
 		name.setFont(Fonts::NanumSquareRound::ExtraBold);
 		name.setString(L"°Ë»ö");

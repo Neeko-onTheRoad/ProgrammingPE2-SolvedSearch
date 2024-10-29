@@ -12,9 +12,16 @@ namespace nk {
 
 	}
 
-	void TitleBar::SetButtonHover(bool flag, sf::RectangleShape& background, sf::Sprite& icon) const {
-		ColorManager::SetOpacity(background, flag ? 255 : 0);
-		icon.setColor(flag ? iconHoverColor : iconColor);
+	void TitleBar::SetButtonHover(bool hovering, bool clicking, sf::RectangleShape& background, sf::Sprite& icon) const {
+		if (clicking) {
+			background.setFillColor(iconClickBackgroundColor);
+			icon.setColor(iconHoverColor);
+
+			return;
+		}
+
+		background.setFillColor(hovering ? iconHoverBackgroundColor : sf::Color::Transparent);
+		icon.setColor(hovering ? iconHoverColor : iconColor);
 	}
 
 	void TitleBar::UpdateMovement(const sf::Event& event) {
@@ -73,29 +80,29 @@ namespace nk {
 			bool mouseMoved = event.type == sf::Event::MouseMoved;
 
 			if (mouseMoved && !cursorHovering) {
-				SetButtonHover(false, background, icon);
+				SetButtonHover(false, false, background, icon);
 				hovering = false;
 				clicking = false;
 			}
 		}
 		if (clicking) {
 			if (event.type != sf::Event::MouseButtonReleased) return;
-			if (cursorHovering) return;
 
 			SetButtonHover(false, false, background, icon);
+			callback();
 			clicking = false;
 		}
 		else if (hovering) {
 			if (event.type != sf::Event::MouseButtonPressed) return;
-			if (cursorHovering) return;
 
+			SetButtonHover(false, true, background, icon);
 			clicking = true;
 		}
 		else {
 			if (event.type != sf::Event::MouseMoved) return;
 			if (!cursorHovering) return;
 
-			SetButtonHover(true, background, icon);
+			SetButtonHover(true, false, background, icon);
 			hovering = true;
 		}
 	}
@@ -129,11 +136,14 @@ namespace nk {
 		const sf::Color& backgroundColor,
 		const sf::Color& iconColor,
 		const sf::Color& iconHoverColor,
-		const sf::Color& iconHoverBackgroundColor
+		const sf::Color& iconHoverBackgroundColor,
+		const sf::Color& iconClickBackgroundColor
 	) {
 
 		this->iconColor = iconColor;
 		this->iconHoverColor = iconHoverColor;
+		this->iconHoverBackgroundColor = iconHoverBackgroundColor;
+		this->iconClickBackgroundColor = iconClickBackgroundColor;
 		
 		sf::Vector2f backgroundSize {
 			ClientWindow::Get().GetRawSizeF().x,

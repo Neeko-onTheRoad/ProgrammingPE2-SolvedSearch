@@ -22,6 +22,8 @@ namespace nk {
 
 		sf::Color iconColor;
 		sf::Color iconHoverColor;
+		sf::Color iconHoverBackgroundColor;
+		sf::Color iconClickBackgroundColor;
 
 		bool hoveringCloseButton = false;
 		bool clickingCloseButton = false;
@@ -32,7 +34,8 @@ namespace nk {
 		void UpdateMovement(const sf::Event& event);
 
 		void SetButtonHover(
-			bool flag,
+			bool hovering,
+			bool clicking,
 			sf::RectangleShape& background,
 			sf::Sprite& icon
 		) const;
@@ -58,7 +61,8 @@ namespace nk {
 			const sf::Color& backgroundColor,
 			const sf::Color& iconColor,
 			const sf::Color& iconHoverColor,
-			const sf::Color& iconHoverBackgroundColor
+			const sf::Color& iconHoverBackgroundColor,
+			const sf::Color& iconClickBackgroundColor
 		);
 
 		float GetHeight();

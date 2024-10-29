@@ -19,6 +19,16 @@ namespace nk {
 		sf::Color clickBackgroundColor;
 		sf::Color clickForegroundColor;
 
+		bool hovering = false;
+		bool clicking = false;
+
+	private:
+		void SetVisualDefault();
+		void SetVisualHover();
+		void SetVisualClick();
+
+		void Search();
+
 	protected:
 		void Update(const sf::Event& event) override;
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -28,7 +38,6 @@ namespace nk {
 			QueryTable* queryTable, 
 			sf::Vector2f size,
 			float yPos,
-			float outlineThickness,
 			unsigned fontSize,
 			sf::Color backgroundColor,
 			sf::Color foregroundColor,

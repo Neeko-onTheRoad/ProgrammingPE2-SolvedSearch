@@ -18,6 +18,7 @@ namespace nk {
 		sf::Sprite resultSpriteBuffer;
 		sf::RectangleShape backgroundMask;
 		sf::RectangleShape centerLine;
+		sf::RectangleShape buttonLine;
 		sf::RenderStates renderStates;
 		sf::Vector2f queryButtonOrigin;
 
@@ -38,6 +39,8 @@ namespace nk {
 			float margin,
 			float centerLineThickness,
 			float centerLineMargin,
+			float buttonLineMargin,
+			float buttonLineBottomMargin,
 			const sf::Color& backgroundColor,
 			const sf::Color& centerLineColor
 		);

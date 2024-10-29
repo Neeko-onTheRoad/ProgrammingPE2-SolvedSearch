@@ -31,7 +31,8 @@ namespace nk {
 			AcColors::DarkerGray, // backgroundColor
 			AcColors::LightGray, // iconColor
 			AcColors::White, // iconHoverColor
-			AcColors::LightGray // iconHoverBackgroundColor
+			AcColors::LightGray, // iconHoverBackgroundColor
+			AcColors::Hilight // iconClickBackgroundColor
 		);
 
 		AddObject(
@@ -52,6 +53,8 @@ namespace nk {
 			0.02f, // margin
 			0.001f, // centerLineThickness
 			0.02f, // centerLineMargin
+			0.02f, // buttonLineMargin
+			0.3f, // buttonLineBottomMargin
 			AcColors::DarkerGray, // backgroundColor
 			AcColors::DarkGray // centerLineColor
 		);
@@ -66,9 +69,8 @@ namespace nk {
 				queryTable,
 				{ 0.25f, 0.08f },
 				0.88f,
-				3.f,
 				30,
-				AcColors::DarkerGray,
+				AcColors::DarkGray,
 				AcColors::LightGray,
 				AcColors::LightGray,
 				AcColors::White,

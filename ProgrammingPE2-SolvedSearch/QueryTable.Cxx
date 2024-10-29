@@ -83,6 +83,8 @@ namespace nk{
 		float margin,
 		float centerLineThickness,
 		float centerLineMargin,
+		float buttonLineMargin,
+		float buttonLineBottomMargin,
 		const sf::Color& backgroundColor,
 		const sf::Color& centerLineColor
 	) {
@@ -116,7 +118,7 @@ namespace nk{
 		};
 
 		sf::Vector2f centerLinePosition = {
-			backgroundSize.x / 2 + background.getPosition().x,
+			backgroundSize.x / 2 + background.getPosition().x - centerLineSize.x / 2.f,
 			background.getPosition().y + ClientWindow::Get().GetSize().y * centerLineMargin
 		};
 
@@ -124,6 +126,20 @@ namespace nk{
 		centerLine.setPosition(centerLinePosition);
 		centerLine.setFillColor(centerLineColor);
 
+		sf::Vector2f buttonLineSize = {
+			backgroundSize.x / 2.f * (1.f - buttonLineMargin * 2.f),
+			centerLineThickness * ClientWindow::Get().GetSize().y
+		};
+
+		sf::Vector2f buttonLinePosition = {
+			backgroundSize.x / 4.f,
+			backgroundSize.y * (1 - buttonLineBottomMargin)
+		};
+
+		buttonLine.setSize(buttonLineSize);
+		buttonLine.setOrigin(buttonLineSize / 2.f);
+		buttonLine.setPosition(buttonLinePosition);
+		buttonLine.setFillColor(centerLineColor);
 
 		QueryTagButton::SetBackgroundColor(AcColors::DarkerGray);
 		QueryTagButton::SetForegroundColor(AcColors::LightGray);

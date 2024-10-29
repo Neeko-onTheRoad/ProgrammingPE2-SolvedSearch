@@ -48,8 +48,15 @@ namespace nk {
 		renderTexture.draw(background);
 		renderTexture.draw(name);
 
+		sf::IntRect textureRect = {
+			0, 
+			static_cast<int>(size.y),
+			static_cast<int>(size.x),
+			static_cast<int>(-size.y)
+		};
+
 		renderSprite.setTexture(renderTexture.getTexture());
-		renderSprite.setTextureRect(sf::IntRect(0, size.y, size.x, -size.y));
+		renderSprite.setTextureRect(textureRect);
 		renderSprite.setPosition(position);
 
 	}
@@ -100,7 +107,6 @@ namespace nk {
 		}
 		if (clicking) {
 			if (event.type != sf::Event::MouseButtonReleased) return;
-			if (!cursorHovering) return;
 
 			isButtonActivated = !isButtonActivated;
 			if (isButtonActivated) {
@@ -113,7 +119,6 @@ namespace nk {
 		}
 		else if (hovering) {
 			if (event.type != sf::Event::MouseButtonPressed) return;
-			if (!cursorHovering) return;
 
 			if (isButtonActivated) {
 				SetVisualClick();
@@ -163,7 +168,10 @@ namespace nk {
 
 		this->name.setPosition(textPositionDelta);
 
-		renderTexture.create(size.x, size.y);
+		renderTexture.create(
+			static_cast<unsigned>(size.x),
+			static_cast<unsigned>(size.y)
+		);
 	}
 
 	bool QueryTagButton::IsButtonActivated() const {
