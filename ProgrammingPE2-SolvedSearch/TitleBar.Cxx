@@ -82,7 +82,7 @@ namespace nk {
 			if (event.type != sf::Event::MouseButtonReleased) return;
 			if (cursorHovering) return;
 
-			callback();
+			SetButtonHover(false, false, background, icon);
 			clicking = false;
 		}
 		else if (hovering) {
