@@ -11,6 +11,7 @@
 #include "Fonts.Hxx"
 #include "Icons.Hxx"
 #include "ClientObject.Hxx"
+#include "QueryButton.Hxx"
 
 #include "TitleBar.Hxx"
 #include "Background.Hxx"
@@ -29,6 +30,10 @@ namespace nk {
 		enum Layers {
 			Background			= INT_MIN,
 			ObjectBackgrounds	= INT16_MIN,
+			ObjectEffectBack	= CHAR_MIN,
+			Objects				= NULL,
+			ObjectEffectFront	= CHAR_MAX,
+			ObjectForegrounds	= INT16_MAX,
 			TitleBar			= INT_MAX
 		};
 

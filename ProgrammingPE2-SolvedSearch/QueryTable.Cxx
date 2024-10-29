@@ -159,4 +159,12 @@ namespace nk{
 
 	}
 
+    sf::Vector2f QueryTable::GetSize() const {
+        return background.getSize();
+    }
+
+	sf::Vector2f QueryTable::GetPosition() const {
+		return background.getPosition();
+	}
+
 }

@@ -47,16 +47,35 @@ namespace nk {
 			Layers::Background
 		);
 
+		QueryTable* queryTable = new QueryTable(
+			0.48f, // width
+			0.02f, // margin
+			0.001f, // centerLineThickness
+			0.02f, // centerLineMargin
+			AcColors::DarkerGray, // backgroundColor
+			AcColors::DarkGray // centerLineColor
+		);
+
 		AddObject(
-			new QueryTable(
-				0.48f, // width
-				0.02f, // margin
-				0.001f, // centerLineThickness
-				0.02f, // centerLineMargin
-				AcColors::DarkerGray, // backgroundColor
-				AcColors::DarkGray // centerLineColor
-			),
+			queryTable,
 			Layers::ObjectBackgrounds
+		);
+
+		AddObject(
+			new QueryButton(
+				queryTable,
+				{ 0.25f, 0.08f },
+				0.88f,
+				3.f,
+				30,
+				AcColors::DarkerGray,
+				AcColors::LightGray,
+				AcColors::LightGray,
+				AcColors::White,
+				AcColors::Hilight,
+				AcColors::White
+			),
+			Layers::Objects
 		);
 	}
 }

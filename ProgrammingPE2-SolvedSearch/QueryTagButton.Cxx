@@ -1,4 +1,5 @@
 #include "QueryTagButton.Hxx"
+#include <iostream>
 
 namespace nk {
 
@@ -39,8 +40,18 @@ namespace nk {
 	}
 
 	void QueryTagButton::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-		target.draw(background, states);
-		target.draw(name);
+		target.draw(renderSprite, states);
+	}
+
+	void QueryTagButton::Rerender() {
+		
+		renderTexture.draw(background);
+		renderTexture.draw(name);
+
+		renderSprite.setTexture(renderTexture.getTexture());
+		renderSprite.setTextureRect(sf::IntRect(0, size.y, size.x, -size.y));
+		renderSprite.setPosition(position);
+
 	}
 
 	void QueryTagButton::Update(const sf::Event& event) { 
@@ -61,7 +72,9 @@ namespace nk {
 			mouseYPos = static_cast<float>(event.mouseButton.y);
 		}
 
-		bool cursorHovering = background
+		isNeedRerender = true;
+
+		bool cursorHovering = renderSprite
 			.getGlobalBounds()
 			.contains(
 				mouseXPos,
@@ -141,7 +154,16 @@ namespace nk {
 		this->name.setCharacterSize(textSize);
 		this->name.setFillColor(foregroundColor);
 
-		SetPosition(position);
+		this->position = position;
+
+		sf::Vector2f textPositionDelta = {
+			textMarginLeft * ClientWindow::Get().GetSize().x,
+			size.y / 2 - this->name.getGlobalBounds().height / 1.5f
+		};
+
+		this->name.setPosition(textPositionDelta);
+
+		renderTexture.create(size.x, size.y);
 	}
 
 	bool QueryTagButton::IsButtonActivated() const {
@@ -157,17 +179,11 @@ namespace nk {
 	}
 
 	sf::Vector2f QueryTagButton::GetPosition() const {
-		return background.getPosition();
+		return renderSprite.getPosition();
 	}
 
 	void QueryTagButton::SetPosition(sf::Vector2f position) {
-		background.setPosition(position);
-
-		sf::Vector2f textPositionDelta = {
-			textMarginLeft * ClientWindow::Get().GetSize().x,
-			size.y / 2 - this->name.getGlobalBounds().height / 1.5f
-		};
-		this->name.setPosition(textPositionDelta + position);
+		this->position = position;
 	}
 
 	void QueryTagButton::AddPosition(sf::Vector2f delta) {

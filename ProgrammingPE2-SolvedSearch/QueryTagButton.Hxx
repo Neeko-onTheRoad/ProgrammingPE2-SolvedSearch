@@ -29,6 +29,10 @@ namespace nk {
 		bool hovering = false;
 		bool clicking = false;
 
+		sf::Vector2f position;
+		sf::RenderTexture renderTexture;
+		sf::Sprite renderSprite;
+
 	private:
 		void SetVisualDefault();
 		void SetVisualHover();
@@ -37,6 +41,7 @@ namespace nk {
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+		void Rerender() override;
 		void Update(const sf::Event& event) override;
 
 	public:

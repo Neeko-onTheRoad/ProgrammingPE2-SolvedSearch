@@ -42,6 +42,9 @@ namespace nk {
 			const sf::Color& centerLineColor
 		);
 
+		sf::Vector2f GetSize() const;
+		sf::Vector2f GetPosition() const;
+
 	};
 
 }
