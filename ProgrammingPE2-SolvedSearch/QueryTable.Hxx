@@ -23,10 +23,11 @@ namespace nk {
 		sf::Vector2f queryButtonOrigin;
 
 		std::vector<QueryTagButton*> queryButtons;
-
-		SolvedAcManager solvedManager;
-
 		float scroll = 0.f;
+
+	public:
+		SolvedAcManager SolvedManager;
+
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

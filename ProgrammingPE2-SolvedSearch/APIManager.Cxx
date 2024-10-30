@@ -91,7 +91,6 @@ namespace nk {
 		CURLcode errorCode;
 
 		std::string url = BuildUrl();
-		std::cout << url << std::endl;
 
 		curl_easy_setopt(curlClient, CURLOPT_URL, url.c_str());
 		curl_easy_setopt(curlClient, CURLOPT_WRITEFUNCTION, WriteCallback);

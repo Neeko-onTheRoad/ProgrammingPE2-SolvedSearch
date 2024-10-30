@@ -165,10 +165,10 @@ namespace nk{
 
 		sf::Vector2f offset = { 0, 0 };
 
-		for (auto& name : solvedManager.GetNames()) {
+		for (auto& name : SolvedManager.GetNames()) {
 			queryButtons.push_back(new QueryTagButton(
 				LocaleManager::Utf8ToWString(name),
-				solvedManager.GetTagKeyByName(name),
+				SolvedManager.GetTagKeyByName(name),
 				queryButtonOrigin + offset
 			));
 			offset.y += QueryTagButton::GetSize().y;
@@ -188,16 +188,12 @@ namespace nk{
 
 		std::vector<std::string> result;
 
-		std::vector<std::string> activatedTags;
-
 		for (auto& queryButton : queryButtons) {
 			if (!queryButton->IsButtonActivated()) continue;
 
 			std::string resultStr = LocaleManager::WStringToUtf8(queryButton->GetName());
-			activatedTags.push_back(solvedManager.GetTagKeyByName(resultStr));
+			result.push_back(SolvedManager.GetTagKeyByName(resultStr));
 		}
-
-		const std::vector<Problem*>& reseavedJson = solvedManager.GetProblems(activatedTags, 0, 30);
 
 		return result;
 

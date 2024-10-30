@@ -21,6 +21,10 @@ namespace nk {
 
 		std::vector<std::string> activatedTags = queryTable->GetActiveTags();
 
+		const std::vector<Problem*>& reseavedJson = queryTable->SolvedManager.GetProblems(activatedTags, 0, 30);
+
+		
+
 	}
 
 	void QueryButton::Update(const sf::Event& event) {
