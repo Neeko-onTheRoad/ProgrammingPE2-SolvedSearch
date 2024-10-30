@@ -40,7 +40,6 @@ namespace nk {
 
 		}
 
-
 	}
 
 	const std::set<std::string>& SolvedAcManager::GetTags() const {
@@ -50,7 +49,7 @@ namespace nk {
 	const std::set<std::string>& SolvedAcManager::GetNames() const {
 		return tagNames;
 	}
-	
+
 	const std::string SolvedAcManager::GetTagNameByKey(std::string tag) const {
 		return tagKeyNameTable.at(tag);
 	}
@@ -59,4 +58,38 @@ namespace nk {
 		return tagNameKeyTable.at(name);
 	}
 
+    const std::vector<Problem>& SolvedAcManager::GetProblems(
+		const std::vector<std::string>& tags,
+		int minTier,
+		int maxTier
+	) {
+		
+		std::vector<Problem> problems;
+	
+		std::string query;
+
+		if (minTier == maxTier) {
+			query += " *" + std::to_string(maxTier);
+		}
+		else {
+			query += " *" + std::to_string(minTier) + ".." + std::to_string(maxTier);
+		}
+
+		for (auto& tag : tags) {
+			query += " #" + tag;
+		}
+
+		apiManager.SetUri(URI_SEARCH_PROBLEM);
+		apiManager.SetQuery("direction", "asc");
+		apiManager.SetQuery("sort", "random");
+		apiManager.SetQuery("page", "1");
+		apiManager.SetQuery("query", query);
+
+		apiManager.SetHeader("Accept", "application/json");
+		apiManager.SetHeader("x-solvedac-language", "ko");
+
+		return problems;
+
+    }
+	
 }

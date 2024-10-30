@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include <nlohmann/json.hpp>
+#include "Problem.Hxx"
 #include "APIManager.Hxx"
 #include "LocaleManager.Hxx"
 
@@ -47,6 +48,11 @@ namespace nk {
 		const std::string GetTagNameByKey(std::string key) const;
 		const std::string GetTagKeyByName(std::string name) const;
 
+		const std::vector<Problem>& GetProblems(
+			const std::vector<std::string>& tags,
+			int minTier,
+			int maxTier
+		);
 	};
 
 }

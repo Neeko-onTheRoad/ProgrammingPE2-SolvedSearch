@@ -117,9 +117,11 @@ namespace nk {
 	}
 
 	std::string ApiManager::GetResponseAndClear() {
+
 		std::string result = GetResponse();
 		ClearAll();
 		return result;
+
 	}
 
 }
