@@ -58,13 +58,13 @@ namespace nk {
 		return tagNameKeyTable.at(name);
 	}
 
-    const std::vector<Problem>& SolvedAcManager::GetProblems(
+    std::vector<Problem*> SolvedAcManager::GetProblems(
 		const std::vector<std::string>& tags,
 		int minTier,
 		int maxTier
 	) {
 		
-		std::vector<Problem> problems;
+		std::vector<Problem*> problems;
 	
 		std::string query;
 
@@ -83,10 +83,18 @@ namespace nk {
 		apiManager.SetQuery("direction", "asc");
 		apiManager.SetQuery("sort", "random");
 		apiManager.SetQuery("page", "1");
-		apiManager.SetQuery("query", query);
+		apiManager.SetQuery("query", LocaleManager::URLEncode(query));
 
 		apiManager.SetHeader("Accept", "application/json");
 		apiManager.SetHeader("x-solvedac-language", "ko");
+
+		nlm::json reseavedJson = nlm::json::parse(apiManager.GetResponseAndClear());
+
+		for (auto& problemData : reseavedJson["items"]) {
+			std::cout << problemData.items();
+
+			problems.push_back(new Problem(problemData));
+		}
 
 		return problems;
 

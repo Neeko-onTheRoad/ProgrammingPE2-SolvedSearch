@@ -1,6 +1,9 @@
 #include "Problem.Hxx"
 
 namespace nk {
+	Problem::Problem(const nlm::json& json) {
+		LoadFromJson(json);
+	}
 
 	std::string Problem::GetTitle() const {
 		return title;
@@ -24,7 +27,7 @@ namespace nk {
 
 	void Problem::LoadFromJson(const nlm::json& json) {
 		
-		title = json.at("title");
+		title = json.at("titleKo");
 		level = json.at("level");
 		averageTries = json.at("averageTries");
 		

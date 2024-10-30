@@ -184,4 +184,24 @@ namespace nk{
 		return background.getPosition();
 	}
 
+	std::vector<std::string> QueryTable::GetActiveTags() {
+
+		std::vector<std::string> result;
+
+		std::vector<std::string> activatedTags;
+
+		for (auto& queryButton : queryButtons) {
+			if (!queryButton->IsButtonActivated()) continue;
+
+			std::string resultStr = LocaleManager::WStringToUtf8(queryButton->GetName());
+			activatedTags.push_back(solvedManager.GetTagKeyByName(resultStr));
+		}
+
+		const std::vector<Problem*>& reseavedJson = solvedManager.GetProblems(activatedTags, 0, 30);
+
+		return result;
+
+	}
+
+
 }

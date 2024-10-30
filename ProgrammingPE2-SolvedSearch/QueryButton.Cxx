@@ -18,7 +18,9 @@ namespace nk {
 	}
 
 	void QueryButton::Search() {
-		
+
+		std::vector<std::string> activatedTags = queryTable->GetActiveTags();
+
 	}
 
 	void QueryButton::Update(const sf::Event& event) {

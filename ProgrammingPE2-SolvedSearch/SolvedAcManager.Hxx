@@ -11,6 +11,8 @@ namespace nk {
 
 	namespace nlm = nlohmann;
 
+	class Problem;
+
 	class SolvedAcManager {
 
 //======================================================================| Constants
@@ -48,11 +50,12 @@ namespace nk {
 		const std::string GetTagNameByKey(std::string key) const;
 		const std::string GetTagKeyByName(std::string name) const;
 
-		const std::vector<Problem>& GetProblems(
+		std::vector<Problem*> GetProblems(
 			const std::vector<std::string>& tags,
 			int minTier,
 			int maxTier
 		);
+
 	};
 
 }

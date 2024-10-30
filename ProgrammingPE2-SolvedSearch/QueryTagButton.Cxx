@@ -95,7 +95,7 @@ namespace nk {
 
 
 			if (mouseMoved && !cursorHovering) {
-				if (isButtonActivated) {
+				if (!isButtonActivated) {
 					SetVisualDefault();
 				}
 				else {
@@ -109,7 +109,7 @@ namespace nk {
 			if (event.type != sf::Event::MouseButtonReleased) return;
 
 			isButtonActivated = !isButtonActivated;
-			if (isButtonActivated) {
+			if (!isButtonActivated) {
 				SetVisualDefault();
 			}
 			else {
@@ -120,7 +120,7 @@ namespace nk {
 		else if (hovering) {
 			if (event.type != sf::Event::MouseButtonPressed) return;
 
-			if (isButtonActivated) {
+			if (!isButtonActivated) {
 				SetVisualClick();
 			}
 			else {
@@ -136,7 +136,7 @@ namespace nk {
 			if (!mouseMoved) return;
 			if (!cursorHovering) return;
 
-			if (isButtonActivated) {
+			if (!isButtonActivated) {
 				SetVisualHover();
 			}
 			else {
@@ -182,7 +182,7 @@ namespace nk {
 		return target;
 	}
 
-	std::string QueryTagButton::GetName() const {
+	std::wstring QueryTagButton::GetName() const {
 		return name.getString();
 	}
 

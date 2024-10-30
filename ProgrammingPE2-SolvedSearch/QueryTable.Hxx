@@ -48,6 +48,8 @@ namespace nk {
 		sf::Vector2f GetSize() const;
 		sf::Vector2f GetPosition() const;
 
+		std::vector<std::string> GetActiveTags();
+
 	};
 
 }

@@ -25,7 +25,7 @@ namespace nk {
 		std::string target;
 		sf::RectangleShape background;
 
-		bool isButtonActivated = true;
+		bool isButtonActivated = false;
 		bool hovering = false;
 		bool clicking = false;
 
@@ -53,7 +53,7 @@ namespace nk {
 
 		bool IsButtonActivated() const;
 		std::string GetTarget() const;
-		std::string GetName() const;
+		std::wstring GetName() const;
 
 		sf::Vector2f GetPosition() const;
 		void SetPosition(sf::Vector2f position);

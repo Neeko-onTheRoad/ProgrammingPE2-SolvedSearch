@@ -18,6 +18,8 @@ namespace nk {
 		std::vector<std::string> tagKeys;
 
 	public:
+		Problem(const nlm::json& json);
+
 		std::string GetTitle() const;
 		int GetLevel() const;
 		float GetAverageTries() const;
