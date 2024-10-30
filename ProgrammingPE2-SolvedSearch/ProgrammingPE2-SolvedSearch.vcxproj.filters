@@ -49,6 +49,12 @@
     <Filter Include="소스 파일\Datas">
       <UniqueIdentifier>{e9046a95-d40f-42be-80d7-053f950e761d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\System\Network\Types">
+      <UniqueIdentifier>{aea4cf0a-fdf1-416f-bb11-a8ab6972fddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System\Network\Types">
+      <UniqueIdentifier>{e20212dc-fb02-479e-80bd-9b88add3dac2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Index.Cxx">
@@ -99,6 +105,12 @@
     <ClCompile Include="QueryButton.Cxx">
       <Filter>소스 파일\Client\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Problem.Hxx">
+      <Filter>헤더 파일\System\Network\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Problem.Cxx">
+      <Filter>소스 파일\System\Network\Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApiManager.Hxx">
@@ -112,9 +124,6 @@
     </ClInclude>
     <ClInclude Include="LocaleManager.Hxx">
       <Filter>헤더 파일\System\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="JsonConvertable.Hxx">
-      <Filter>헤더 파일\System</Filter>
     </ClInclude>
     <ClInclude Include="Background.Hxx">
       <Filter>헤더 파일\Client\Objects</Filter>

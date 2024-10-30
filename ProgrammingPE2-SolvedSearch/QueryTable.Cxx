@@ -7,6 +7,7 @@ namespace nk{
 		
 		target.draw(resultSpriteBuffer, states);
 		target.draw(centerLine, states);
+		target.draw(buttonLine, states);
 	}
 
 	void QueryTable::Rerender() {
@@ -128,11 +129,11 @@ namespace nk{
 
 		sf::Vector2f buttonLineSize = {
 			backgroundSize.x / 2.f * (1.f - buttonLineMargin * 2.f),
-			centerLineThickness * ClientWindow::Get().GetSize().y
+			centerLineThickness * ClientWindow::Get().GetSize().x
 		};
 
 		sf::Vector2f buttonLinePosition = {
-			backgroundSize.x / 4.f,
+			backgroundSize.x / 4.f + background.getPosition().x,
 			backgroundSize.y * (1 - buttonLineBottomMargin)
 		};
 

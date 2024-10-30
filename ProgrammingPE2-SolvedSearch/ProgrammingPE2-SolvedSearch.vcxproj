@@ -168,6 +168,8 @@
     <ClCompile Include="Fonts.Cxx" />
     <ClCompile Include="Icons.Cxx" />
     <ClCompile Include="Index.Cxx" />
+    <ClCompile Include="Problem.Cxx" />
+    <ClCompile Include="Problem.Hxx" />
     <ClCompile Include="QueryButton.Cxx" />
     <ClCompile Include="QueryTagButton.Cxx" />
     <ClCompile Include="QueryTable.Cxx" />
@@ -184,7 +186,6 @@
     <ClInclude Include="AcColors.Hxx" />
     <ClInclude Include="ColorManager.Hxx" />
     <ClInclude Include="Fonts.Hxx" />
-    <ClInclude Include="JsonConvertable.Hxx" />
     <ClInclude Include="Icons.Hxx" />
     <ClInclude Include="QueryButton.Hxx" />
     <ClInclude Include="QueryTagButton.Hxx" />

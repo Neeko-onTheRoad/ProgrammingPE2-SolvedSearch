@@ -43,6 +43,7 @@ namespace nk {
 	public:
 		const std::set<std::string>& GetTags() const;
 		const std::set<std::string>& GetNames() const;
+
 		const std::string GetTagNameByKey(std::string key) const;
 		const std::string GetTagKeyByName(std::string name) const;
 
