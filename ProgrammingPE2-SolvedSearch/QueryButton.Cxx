@@ -22,11 +22,7 @@ namespace nk {
 		std::vector<std::string> activatedTags = queryTable->GetActiveTags();
 		const std::vector<Problem*>& problems = queryTable->SolvedManager.GetProblems(activatedTags, 0, 30);
 
-		for (auto& problem : problems) {
-			
-		}
-
-
+		queryResult->SetButton(problems);
 
 	}
 
@@ -98,6 +94,7 @@ namespace nk {
 		this->clickBackgroundColor = clickBackgroundColor;
 		this->clickForegroundColor = clickForegroundColor;
 
+		this->queryResult = queryResult;
 		this->queryTable = queryTable;
 
 		sf::Vector2f position = queryTable->GetPosition() + sf::Vector2f(
@@ -128,5 +125,8 @@ namespace nk {
     }
 	sf::Vector2f QueryButton::GetSize() const {
 		return background.getSize();
+	}
+	void QueryButton::SetQueryResult(QueryResult* queryResult) {
+		this->queryResult = queryResult;
 	}
 }

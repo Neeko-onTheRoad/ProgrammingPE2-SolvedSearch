@@ -9,6 +9,7 @@ namespace nk {
 	sf::Texture Icons::SolvedLogo;
 	sf::Texture Icons::SolvedLogoNoBG;
 	sf::Texture Icons::SolvedTierBackground;
+	std::unordered_map<int, sf::Texture> Icons::solvedTiers;
 
 	void Icons::LoadIcons() {
 		
@@ -23,6 +24,17 @@ namespace nk {
 		SolvedLogo.setSmooth(true);
 		SolvedLogoNoBG.setSmooth(true);
 		SolvedTierBackground.setSmooth(true);
+
+		std::string solvedTierIconsPath = IconPath + "SolvedTier/";
+
+		for (int i = 0; i < 30; i++) {
+			solvedTiers[i].loadFromFile(solvedTierIconsPath + std::to_string(i) + ".png");
+		}
+
 	}
+
+    sf::Texture& Icons::GetSolvedTier(int level) {
+        return solvedTiers[level];
+    }
 
 }

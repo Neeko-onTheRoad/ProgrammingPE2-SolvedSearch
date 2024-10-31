@@ -64,19 +64,21 @@ namespace nk {
 			Layers::ObjectBackgrounds
 		);
 
+		QueryButton* queryButton = new QueryButton(
+			queryTable, // queryTable
+			{ 0.25f, 0.08f }, // size
+			0.88f, // xPos
+			30, // fontSize
+			AcColors::DarkGray, // backgroundColor
+			AcColors::LightGray, // foregroundColor
+			AcColors::LightGray, // hoverBackgroundColor
+			AcColors::White, // hoverForegroundColor
+			AcColors::Hilight, // clickBackgroundColor
+			AcColors::White // clickForegroundColor
+		);
+
 		AddObject(
-			new QueryButton(
-				queryTable, // queryTable
-				{ 0.25f, 0.08f }, // size
-				0.88f, // xPos
-				30, // fontSize
-				AcColors::DarkGray, // backgroundColor
-				AcColors::LightGray, // foregroundColor
-				AcColors::LightGray, // hoverBackgroundColor
-				AcColors::White, // hoverForegroundColor
-				AcColors::Hilight, // clickBackgroundColor
-				AcColors::White // clickForegroundColor
-			),
+			queryButton,
 			Layers::Objects
 		);
 
@@ -88,14 +90,23 @@ namespace nk {
 		sf::Vector2f queryResultSize = {
 			ClientWindow::Get().GetSize().x - queryResultPosition.x - queryTable->GetPosition().x,
 			queryTable->GetSize().y,
-		};
+		}; 
+
+		QueryResult* queryResult = new QueryResult(
+			queryTable->SolvedManager,
+			queryResultPosition,
+			queryResultSize,
+			5,
+			0.01f
+		);
 
 		AddObject(
-			new QueryResult(
-				queryResultPosition,
-				queryResultSize
-			),
+			queryResult,
 			Layers::Objects
 		);
+
+		queryButton->SetQueryResult(queryResult);
+
+
 	}
 }

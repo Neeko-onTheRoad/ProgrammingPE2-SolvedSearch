@@ -107,6 +107,7 @@ namespace nk {
 		}
 		if (clicking) {
 			if (event.type != sf::Event::MouseButtonReleased) return;
+			if (event.mouseButton.button != sf::Mouse::Button::Left) return;
 
 			isButtonActivated = !isButtonActivated;
 			if (!isButtonActivated) {
@@ -119,6 +120,7 @@ namespace nk {
 		}
 		else if (hovering) {
 			if (event.type != sf::Event::MouseButtonPressed) return;
+			if (event.mouseButton.button != sf::Mouse::Button::Left) return;
 
 			if (!isButtonActivated) {
 				SetVisualClick();

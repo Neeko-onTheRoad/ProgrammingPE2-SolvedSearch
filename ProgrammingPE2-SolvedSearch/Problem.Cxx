@@ -1,16 +1,24 @@
 #include "Problem.Hxx"
 
 namespace nk {
-	Problem::Problem(const nlm::json& json) {
-		LoadFromJson(json);
+	Problem::Problem() {
+		title = "N/A";
+		tier = 1;
+		id = 1000;
+		averageTries = 0.f;
+		acceptedUserCount = 0;
 	}
 
-	std::string Problem::GetTitle() const {
-		return title;
+	std::wstring Problem::GetTitle() const {
+		return LocaleManager::Utf8ToWString(title);
 	}
 
-	int Problem::GetLevel() const {
-		return level;
+    int Problem::GetId() const {
+        return id;
+    }
+
+	int Problem::GetTier() const {
+		return tier;
 	}
 
 	float Problem::GetAverageTries() const {
@@ -29,7 +37,7 @@ namespace nk {
 		
 		title = json.at("titleKo");
 		id = json.at("problemId");
-		level = json.at("level");
+		tier = json.at("level");
 
 		averageTries = json.at("averageTries");
 		

@@ -1,15 +1,18 @@
 #pragma once
 
 #include "QueryTable.Hxx"
+#include "QueryResult.Hxx"
 
 namespace nk {
 
 	class QueryTable;
+	class QueryResult;
 
 	class QueryButton : public ClientObject {
 
 	private:
 		QueryTable* queryTable;
+		QueryResult* queryResult;
 		sf::RectangleShape background;
 		sf::Text name;		
 		sf::Color backgroundColor;
@@ -35,7 +38,7 @@ namespace nk {
 
 	public:
 		QueryButton(
-			QueryTable* queryTable, 
+			QueryTable* queryTable,
 			sf::Vector2f size,
 			float yPos,
 			unsigned fontSize,
@@ -49,6 +52,8 @@ namespace nk {
 
 		sf::Vector2f GetPosition() const;
 		sf::Vector2f GetSize() const;
+
+		void SetQueryResult(QueryResult* queryResult);
 
 	};
 

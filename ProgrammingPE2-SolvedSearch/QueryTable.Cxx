@@ -1,4 +1,3 @@
-
 #include "QueryTable.Hxx"
 
 namespace nk{

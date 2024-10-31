@@ -1,6 +1,10 @@
 #pragma once
 
+#include <string>
+
+#include "Fonts.Hxx"
 #include "ClientObject.Hxx"
+#include "ClientWindow.Hxx"
 #include "SolvedAcManager.Hxx"
 
 namespace nk {
@@ -14,13 +18,26 @@ namespace nk {
 		static sf::Color foregroundColor;
 		static sf::Vector2f size;
 		static float xPosition;
+		static float textMargin;
+		static unsigned textSize;
 
 		sf::RectangleShape background;
-		sf::Text title;
+		sf::Text name;
 		sf::Sprite tier;
 		std::vector<sf::Text> tags;
 
+		int id;
+
 		SolvedAcManager& solvedManager;
+
+		bool hovering = false;
+		bool clicking = false;
+
+	private:
+		void SetVisualDefault();
+		void SetVisualHover();
+		void SetVisualClick();
+		void OpenWeb() const;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -29,13 +46,14 @@ namespace nk {
 	public:
 		QueryResultButton(
 			SolvedAcManager& solvedManager,
-			std::string title,
+			std::wstring title,
+			int id,
 			int tier,
 			std::vector<std::string> tags,
 			float yPosition
 		);
 
-		sf::Vector2f GetPosition() const;
+		sf::Vector2f GetSize() const;
 		
 		static void SetBackgroundColor(const sf::Color& color);
 		static void SetHoverBackgroundColor(const sf::Color& color);
@@ -43,7 +61,10 @@ namespace nk {
 		static void SetForegroundColor(const sf::Color& color);
 		static void SetSize(sf::Vector2f size);
 		static void SetXPosition(float xPosition);
+		static void SetTextMargin(float margin);
+		static void SetTextSize(unsigned size);
 
+		static float GetHeigh();
 
 	};
 

@@ -91,7 +91,10 @@ namespace nk {
 		nlm::json reseavedJson = nlm::json::parse(apiManager.GetResponseAndClear());
 
 		for (auto& problemData : reseavedJson["items"]) {
-			problems.push_back(new Problem(problemData));
+			Problem* problem = new Problem;
+			problem->LoadFromJson(problemData);
+
+			problems.push_back(problem);
 		}
 
 		return problems;
