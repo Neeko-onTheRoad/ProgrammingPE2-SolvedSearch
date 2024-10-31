@@ -97,7 +97,7 @@ namespace nk {
 			queryResultPosition,
 			queryResultSize,
 			5,
-			0.01f
+			queryTable->GetMargin()
 		);
 
 		AddObject(

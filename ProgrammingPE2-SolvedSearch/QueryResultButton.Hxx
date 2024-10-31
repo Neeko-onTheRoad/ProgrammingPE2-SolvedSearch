@@ -20,6 +20,7 @@ namespace nk {
 		static float xPosition;
 		static float textMargin;
 		static unsigned textSize;
+		static float tierSize;
 
 		sf::RectangleShape background;
 		sf::Text name;
@@ -63,6 +64,7 @@ namespace nk {
 		static void SetXPosition(float xPosition);
 		static void SetTextMargin(float margin);
 		static void SetTextSize(unsigned size);
+		static void SetTierSize(float size);
 
 		static float GetHeigh();
 

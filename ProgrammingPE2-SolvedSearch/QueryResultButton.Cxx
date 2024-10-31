@@ -10,6 +10,7 @@ namespace nk {
 	float QueryResultButton::xPosition;
 	float QueryResultButton::textMargin;
 	unsigned QueryResultButton::textSize;
+	float QueryResultButton::tierSize;
 
 	void QueryResultButton::SetVisualDefault() {
 		background.setFillColor(backgroundColor);
@@ -113,8 +114,7 @@ namespace nk {
 
 		this->tier.setTexture(Icons::GetSolvedTier(tier));
 
-		float tierScale = name.getGlobalBounds().height / this->tier.getGlobalBounds().height;
-		tierScale *= 1.1f;
+		float tierScale = tierSize / this->tier.getGlobalBounds().height;
 
 		this->tier.setScale(tierScale, tierScale);
 		this->tier.setPosition(tierPosition);
@@ -159,6 +159,10 @@ namespace nk {
 
 	void QueryResultButton::SetTextSize(unsigned size) {
 		textSize = size;
+	}
+
+	void QueryResultButton::SetTierSize(float size) {
+		tierSize = size;
 	}
 
 }

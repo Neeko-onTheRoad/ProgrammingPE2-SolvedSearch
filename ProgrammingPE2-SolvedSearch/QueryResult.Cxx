@@ -42,8 +42,9 @@ namespace nk {
 		QueryResultButton::SetForegroundColor(AcColors::White);
 		QueryResultButton::SetSize(resultButtonSize);
 		QueryResultButton::SetXPosition(position.x);
-		QueryResultButton::SetTextSize(25);
+		QueryResultButton::SetTextSize(25u);
 		QueryResultButton::SetTextMargin(0.02f);
+		QueryResultButton::SetTierSize(25.f);
 
 	}
 
