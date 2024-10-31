@@ -47,6 +47,9 @@ namespace nk {
 			sf::Color clickForegroundColor
 		);
 
+		sf::Vector2f GetPosition() const;
+		sf::Vector2f GetSize() const;
+
 	};
 
 }

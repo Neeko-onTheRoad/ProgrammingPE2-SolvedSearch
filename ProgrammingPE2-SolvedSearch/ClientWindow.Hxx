@@ -10,8 +10,9 @@
 
 #include "Fonts.Hxx"
 #include "Icons.Hxx"
-#include "ClientObject.Hxx"
 #include "QueryButton.Hxx"
+#include "QueryResult.Hxx"
+#include "ClientObject.Hxx"
 
 #include "TitleBar.Hxx"
 #include "Background.Hxx"

@@ -79,5 +79,23 @@ namespace nk {
 			),
 			Layers::Objects
 		);
+
+		sf::Vector2f queryResultPosition = {
+			queryTable->GetPosition().x * 2.f + queryTable->GetSize().x, 
+			queryTable->GetPosition().y 
+		};
+
+		sf::Vector2f queryResultSize = {
+			ClientWindow::Get().GetSize().x - queryResultPosition.x - queryTable->GetPosition().x,
+			queryTable->GetSize().y,
+		};
+
+		AddObject(
+			new QueryResult(
+				queryResultPosition,
+				queryResultSize
+			),
+			Layers::Objects
+		);
 	}
 }

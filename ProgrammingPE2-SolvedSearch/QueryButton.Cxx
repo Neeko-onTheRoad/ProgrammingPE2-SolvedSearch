@@ -20,10 +20,13 @@ namespace nk {
 	void QueryButton::Search() {
 
 		std::vector<std::string> activatedTags = queryTable->GetActiveTags();
+		const std::vector<Problem*>& problems = queryTable->SolvedManager.GetProblems(activatedTags, 0, 30);
 
-		const std::vector<Problem*>& reseavedJson = queryTable->SolvedManager.GetProblems(activatedTags, 0, 30);
+		for (auto& problem : problems) {
+			
+		}
 
-		
+
 
 	}
 
@@ -35,7 +38,7 @@ namespace nk {
 				static_cast<float>(event.mouseMove.x),
 				static_cast<float>(event.mouseMove.y)
 			);
-
+			
 		if (hovering) {
 			bool mouseMoved = event.type == sf::Event::MouseMoved;
 
@@ -119,5 +122,11 @@ namespace nk {
 		name.setPosition(position.x, position.y - ClientWindow::Get().GetSize().y * 0.0025f);
 		name.setFillColor(foregroundColor);
 
+	}
+    sf::Vector2f QueryButton::GetPosition() const {
+        return background.getPosition();
+    }
+	sf::Vector2f QueryButton::GetSize() const {
+		return background.getSize();
 	}
 }

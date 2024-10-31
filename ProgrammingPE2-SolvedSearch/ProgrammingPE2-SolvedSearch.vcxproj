@@ -171,6 +171,8 @@
     <ClCompile Include="Problem.Cxx" />
     <ClCompile Include="Problem.Hxx" />
     <ClCompile Include="QueryButton.Cxx" />
+    <ClCompile Include="QueryResult.Cxx" />
+    <ClCompile Include="QueryResultButton.Cxx" />
     <ClCompile Include="QueryTagButton.Cxx" />
     <ClCompile Include="QueryTable.Cxx" />
     <ClCompile Include="SolvedAcManager.Cxx" />
@@ -188,6 +190,8 @@
     <ClInclude Include="Fonts.Hxx" />
     <ClInclude Include="Icons.Hxx" />
     <ClInclude Include="QueryButton.Hxx" />
+    <ClInclude Include="QueryResult.Hxx" />
+    <ClInclude Include="QueryResultButton.Hxx" />
     <ClInclude Include="QueryTagButton.Hxx" />
     <ClInclude Include="QueryTable.Hxx" />
     <ClInclude Include="SolvedAcManager.Hxx" />
