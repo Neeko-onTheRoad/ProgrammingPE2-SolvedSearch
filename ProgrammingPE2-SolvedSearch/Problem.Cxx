@@ -28,7 +28,9 @@ namespace nk {
 	void Problem::LoadFromJson(const nlm::json& json) {
 		
 		title = json.at("titleKo");
+		id = json.at("problemId");
 		level = json.at("level");
+
 		averageTries = json.at("averageTries");
 		
 		for (auto& tag : json.at("tags")) {

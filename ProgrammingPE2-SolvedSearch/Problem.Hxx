@@ -12,6 +12,7 @@ namespace nk {
 
 	private:
 		std::string title;
+		int id;
 		int level;
 		float averageTries;
 		int acceptedUserCount;
@@ -21,6 +22,7 @@ namespace nk {
 		Problem(const nlm::json& json);
 
 		std::string GetTitle() const;
+		int GetId() const;
 		int GetLevel() const;
 		float GetAverageTries() const;
 		int GetAcceptedUserCount() const;

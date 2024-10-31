@@ -15,5 +15,7 @@ namespace nk {
 		this->position = position;
 		this->size = size;
 
+		
+
 	}
 }

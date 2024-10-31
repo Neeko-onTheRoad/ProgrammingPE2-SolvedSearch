@@ -13,6 +13,7 @@
 #include "QueryButton.Hxx"
 #include "QueryResult.Hxx"
 #include "ClientObject.Hxx"
+#include "QueryResultButton.Hxx"
 
 #include "TitleBar.Hxx"
 #include "Background.Hxx"

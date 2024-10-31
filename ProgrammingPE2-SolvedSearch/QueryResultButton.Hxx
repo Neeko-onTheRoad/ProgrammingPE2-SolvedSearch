@@ -1,13 +1,26 @@
+#pragma once
+
 #include "ClientObject.Hxx"
+#include "SolvedAcManager.Hxx"
 
 namespace nk {
 
 	class QueryResultButton : public ClientObject {
 
 	private:
+		static sf::Color backgroundColor;
+		static sf::Color hoverBackgroundColor;
+		static sf::Color clickBackgroundColor;
+		static sf::Color foregroundColor;
+		static sf::Vector2f size;
+		static float xPosition;
+
 		sf::RectangleShape background;
 		sf::Text title;
-		std::vector<sf::Text> tags; 
+		sf::Sprite tier;
+		std::vector<sf::Text> tags;
+
+		SolvedAcManager& solvedManager;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -15,13 +28,22 @@ namespace nk {
 
 	public:
 		QueryResultButton(
+			SolvedAcManager& solvedManager,
 			std::string title,
 			int tier,
 			std::vector<std::string> tags,
-			sf::Vector2f position,
-			sf::Vector2f size,
-			float outLineThickness
+			float yPosition
 		);
+
+		sf::Vector2f GetPosition() const;
+		
+		static void SetBackgroundColor(const sf::Color& color);
+		static void SetHoverBackgroundColor(const sf::Color& color);
+		static void SetClickBackgroundColor(const sf::Color& color);
+		static void SetForegroundColor(const sf::Color& color);
+		static void SetSize(sf::Vector2f size);
+		static void SetXPosition(float xPosition);
+
 
 	};
 

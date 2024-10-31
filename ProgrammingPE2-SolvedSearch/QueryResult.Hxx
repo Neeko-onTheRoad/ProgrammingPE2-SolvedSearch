@@ -1,4 +1,6 @@
+#include <array>
 #include "ClientObject.Hxx"
+#include "QueryResultButton.Hxx"
 
 namespace nk {
 
@@ -7,6 +9,8 @@ namespace nk {
 	private:
 		sf::Vector2f position;
 		sf::Vector2f size;
+
+		std::array<QueryButton, 5> buttons;
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
