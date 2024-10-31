@@ -16,16 +16,20 @@ namespace nk {
 		static sf::Color hoverBackgroundColor;
 		static sf::Color clickBackgroundColor;
 		static sf::Color foregroundColor;
+		static sf::Color tagColor;
+		static sf::Color tagHoverColor;
 		static sf::Vector2f size;
 		static float xPosition;
 		static float textMargin;
 		static unsigned textSize;
 		static float tierSize;
+		static unsigned tagTextSize;
 
 		sf::RectangleShape background;
 		sf::Text name;
 		sf::Sprite tier;
-		std::vector<sf::Text> tags;
+		std::vector<sf::RectangleShape*> tagBackgrounds;
+		std::vector<sf::Text*> tagTexts;
 
 		int id;
 
@@ -45,6 +49,8 @@ namespace nk {
 		void Update(const sf::Event& event) override;
 
 	public:
+		~QueryResultButton();
+
 		QueryResultButton(
 			SolvedAcManager& solvedManager,
 			std::wstring title,
@@ -60,11 +66,14 @@ namespace nk {
 		static void SetHoverBackgroundColor(const sf::Color& color);
 		static void SetClickBackgroundColor(const sf::Color& color);
 		static void SetForegroundColor(const sf::Color& color);
+		static void SetTagColor(const sf::Color& color);
+		static void SetTagHoverColor(const sf::Color& color);
 		static void SetSize(sf::Vector2f size);
 		static void SetXPosition(float xPosition);
 		static void SetTextMargin(float margin);
 		static void SetTextSize(unsigned size);
 		static void SetTierSize(float size);
+		static void SetTagTextSize(unsigned size);
 
 		static float GetHeigh();
 

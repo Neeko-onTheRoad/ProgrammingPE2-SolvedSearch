@@ -3,19 +3,15 @@
 namespace nk {
 
 	void QueryResult::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-		
 		for (auto& button : buttons) {
 			target.draw(*button, states);
 		}
-
 	}
 
 	void QueryResult::Update(const sf::Event& event) {
-	
 		for (auto& button : buttons) {
 			button->UpdateBase(event);
 		}
-
 	}
 
 	QueryResult::QueryResult(
@@ -40,11 +36,14 @@ namespace nk {
 		QueryResultButton::SetHoverBackgroundColor(AcColors::LightGray);
 		QueryResultButton::SetClickBackgroundColor(AcColors::Hilight);
 		QueryResultButton::SetForegroundColor(AcColors::White);
+		QueryResultButton::SetTagColor(AcColors::LightGray);
+		QueryResultButton::SetTagHoverColor(AcColors::White);
 		QueryResultButton::SetSize(resultButtonSize);
 		QueryResultButton::SetXPosition(position.x);
 		QueryResultButton::SetTextSize(25u);
 		QueryResultButton::SetTextMargin(0.02f);
 		QueryResultButton::SetTierSize(25.f);
+		QueryResultButton::SetTagTextSize(20u);
 
 	}
 

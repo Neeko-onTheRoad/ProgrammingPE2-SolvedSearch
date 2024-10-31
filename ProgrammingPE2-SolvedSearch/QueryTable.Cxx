@@ -30,6 +30,12 @@ namespace nk{
 
 	void QueryTable::Update(const sf::Event& event) {
 
+		if (event.type == sf::Event::KeyPressed) {
+			
+
+			return;
+		}
+
 		if (event.type == sf::Event::MouseWheelScrolled) {
 			
 			float newScroll = scroll + 100 * event.mouseWheelScroll.delta;

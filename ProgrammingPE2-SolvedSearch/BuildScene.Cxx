@@ -23,7 +23,7 @@ namespace nk {
 		loadingScreen.clear(AcColors::DarkGray);
 		loadingScreen.draw(loadingText);
 		loadingScreen.display();
-	
+
 		nk::TitleBar* titleBar = new nk::TitleBar(
 			0.04f, // height
 			0.035f, // buttonWidth

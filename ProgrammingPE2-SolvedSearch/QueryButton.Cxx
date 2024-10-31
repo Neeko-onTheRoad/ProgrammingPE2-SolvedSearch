@@ -28,6 +28,11 @@ namespace nk {
 
 	void QueryButton::Update(const sf::Event& event) {
 
+		if (event.type == sf::Event::MouseLeft) {
+			SetVisualDefault();
+			return;
+		}
+
 		bool cursorHovering = background
 			.getGlobalBounds()
 			.contains(

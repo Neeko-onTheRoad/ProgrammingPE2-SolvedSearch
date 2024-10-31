@@ -69,6 +69,11 @@ namespace nk {
 		void (*callback)()
 	) {
 
+		if (event.type == sf::Event::MouseLeft) {
+			SetButtonHover(false, false, background, icon);
+			return;
+		}
+
 		bool cursorHovering = background
 			.getGlobalBounds()
 			.contains(

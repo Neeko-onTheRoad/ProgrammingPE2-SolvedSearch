@@ -6,22 +6,34 @@ namespace nk {
 	sf::Color QueryResultButton::hoverBackgroundColor;
 	sf::Color QueryResultButton::clickBackgroundColor;
 	sf::Color QueryResultButton::foregroundColor;
+	sf::Color QueryResultButton::tagColor;
+	sf::Color QueryResultButton::tagHoverColor;
 	sf::Vector2f QueryResultButton::size;
 	float QueryResultButton::xPosition;
 	float QueryResultButton::textMargin;
 	unsigned QueryResultButton::textSize;
 	float QueryResultButton::tierSize;
+	unsigned QueryResultButton::tagTextSize;
 
 	void QueryResultButton::SetVisualDefault() {
 		background.setFillColor(backgroundColor);
+		for (auto& tagText : tagTexts) {
+			tagText->setFillColor(tagColor);
+		}
 	}
 
 	void QueryResultButton::SetVisualHover() {
 		background.setFillColor(hoverBackgroundColor);
+		for (auto& tagText : tagTexts) {
+			tagText->setFillColor(tagHoverColor);
+		}
 	}
 
 	void QueryResultButton::SetVisualClick() {
 		background.setFillColor(clickBackgroundColor);
+		for (auto& tagText : tagTexts) {
+			tagText->setFillColor(tagHoverColor);
+		}
 	}
 
 	void QueryResultButton::OpenWeb() const {
@@ -33,10 +45,22 @@ namespace nk {
 		target.draw(background, states);
 		target.draw(name, states);
 		target.draw(tier, states);
+
+		for (auto& tagBackground : tagBackgrounds) {
+			target.draw(*tagBackground, states);
+		}
+		for (auto& tagText : tagTexts) {
+			target.draw(*tagText, states);
+		}
 	}
 
 	void QueryResultButton::Update(const sf::Event& event) {
 		
+		if (event.type == sf::Event::MouseLeft) {
+			SetVisualDefault();
+			return;
+		}
+
 		bool cursorHovering = background
 			.getGlobalBounds()
 			.contains(
@@ -76,7 +100,19 @@ namespace nk {
 
 	}
 
-    QueryResultButton::QueryResultButton(
+	QueryResultButton::~QueryResultButton() {
+	
+		for (auto& tag : tagTexts) {
+			delete tag;
+		}
+
+		for (auto& tagBackground : tagBackgrounds) {
+			delete tagBackground;
+		}
+
+	}
+
+	QueryResultButton::QueryResultButton(
 		SolvedAcManager& solvedManager,
 		std::wstring title,
 		int id,
@@ -119,6 +155,40 @@ namespace nk {
 		this->tier.setScale(tierScale, tierScale);
 		this->tier.setPosition(tierPosition);
 
+		float prevTagXPosition = 0.f;
+
+		for (auto& tag : tags) {
+			
+			sf::Text* tagText = new sf::Text;
+
+			sf::Vector2f tagButtonPosition = backgroundPosition + sf::Vector2f(
+				textMargin * ClientWindow::Get().GetSize().x + prevTagXPosition,
+				-textMargin * ClientWindow::Get().GetSize().x + background.getSize().y
+			);
+
+			tagText->setFillColor(tagColor);
+			tagText->setCharacterSize(tagTextSize);
+			tagText->setFont(Fonts::NanumSquareRound::Bold);
+			tagText->setString(L"#" + LocaleManager::Utf8ToWString(solvedManager.GetTagNameByKey(tag)));
+			tagText->setOrigin(0.f, tagText->getGlobalBounds().height);
+			tagText->setPosition(tagButtonPosition);
+
+			float tagRight = tagText->getPosition().x + tagText->getGlobalBounds().width;
+			float backgroundRight = background.getPosition().x + background.getSize().x;
+
+			if (tagRight >= backgroundRight) {
+				delete tagText;
+				break;
+			}
+
+			prevTagXPosition +=
+				tagText->getGlobalBounds().width +
+				textMargin * ClientWindow::Get().GetSize().x;
+
+			tagTexts.push_back(tagText);
+
+		}
+
 	}
 
 	sf::Vector2f QueryResultButton::GetSize() const {
@@ -145,6 +215,14 @@ namespace nk {
 		foregroundColor = color;
 	}
 
+	void QueryResultButton::SetTagColor(const sf::Color& color) {
+		tagColor = color;
+	}
+
+	void QueryResultButton::SetTagHoverColor(const sf::Color& color) {
+		tagHoverColor = color;
+	}
+
 	void QueryResultButton::SetSize(sf::Vector2f size) {
 		QueryResultButton::size = size;
 	}
@@ -163,6 +241,10 @@ namespace nk {
 
 	void QueryResultButton::SetTierSize(float size) {
 		tierSize = size;
+	}
+
+	void QueryResultButton::SetTagTextSize(unsigned size) {
+		tagTextSize = size;
 	}
 
 }
