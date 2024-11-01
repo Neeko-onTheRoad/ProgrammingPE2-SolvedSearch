@@ -134,4 +134,7 @@ namespace nk {
 	void QueryButton::SetQueryResult(QueryResult* queryResult) {
 		this->queryResult = queryResult;
 	}
+    void QueryButton::SetTierSlide(TierSlide* tierSlide) {
+		this->tierSlide = tierSlide;
+	}
 }

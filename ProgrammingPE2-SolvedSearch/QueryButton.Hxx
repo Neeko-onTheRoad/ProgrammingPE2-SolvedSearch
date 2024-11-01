@@ -1,18 +1,22 @@
 #pragma once
 
+#include "TierSlide.Hxx"
 #include "QueryTable.Hxx"
 #include "QueryResult.Hxx"
 
 namespace nk {
 
+	class TierSlide;
 	class QueryTable;
 	class QueryResult;
 
 	class QueryButton : public ClientObject {
 
 	private:
+		TierSlide* tierSlide;
 		QueryTable* queryTable;
 		QueryResult* queryResult;
+
 		sf::RectangleShape background;
 		sf::Text name;		
 		sf::Color backgroundColor;
@@ -54,6 +58,7 @@ namespace nk {
 		sf::Vector2f GetSize() const;
 
 		void SetQueryResult(QueryResult* queryResult);
+		void SetTierSlide(TierSlide* tierSlide);
 
 	};
 

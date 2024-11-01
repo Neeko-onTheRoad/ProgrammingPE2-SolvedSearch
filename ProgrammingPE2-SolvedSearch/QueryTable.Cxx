@@ -193,6 +193,10 @@ namespace nk{
 		return background.getPosition().x / ClientWindow::Get().GetSize().y;
 	}
 
+    float QueryTable::GetLeftSideHeight() const {
+        return buttonLine.getPosition().y - GetPosition().y;
+    }
+
 	std::vector<std::string> QueryTable::GetActiveTags() {
 
 		std::vector<std::string> result;

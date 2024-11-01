@@ -105,7 +105,23 @@ namespace nk {
 			Layers::Objects
 		);
 
+		TierSlide* tierSlide = new TierSlide(
+			queryTable,
+			0.0025f,
+			0.05f,
+			0.003f,
+			0.04f,
+			AcColors::DarkGray,
+			AcColors::LightGray
+		);
+
+		AddObject(
+			tierSlide,
+			Layers::Objects
+		);
+
 		queryButton->SetQueryResult(queryResult);
+		queryButton->SetTierSlide(tierSlide);
 
 
 	}

@@ -49,6 +49,7 @@ namespace nk {
 		sf::Vector2f GetSize() const;
 		sf::Vector2f GetPosition() const;
 		float GetMargin() const;
+		float GetLeftSideHeight() const;
 
 		std::vector<std::string> GetActiveTags();
 
