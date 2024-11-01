@@ -64,7 +64,7 @@ namespace nk {
 	void QueryTagButton::Update(const sf::Event& event) { 
 
 		if (event.type == sf::Event::MouseLeft) {
-			SetVisualDefault();
+			if (!isButtonActivated) SetVisualDefault();
 			return;
 		}
 

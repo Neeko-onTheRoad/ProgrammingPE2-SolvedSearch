@@ -16,6 +16,8 @@ namespace nk {
 		static sf::Texture SolvedLogoNoBG;
 		static sf::Texture SolvedTierBackground;
 
+		static int SolvedTierCount;
+
 	private:
 		static std::unordered_map<int, sf::Texture> solvedTiers;
 

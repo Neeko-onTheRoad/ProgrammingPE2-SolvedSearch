@@ -10,6 +10,7 @@ namespace nk {
 	sf::Texture Icons::SolvedLogoNoBG;
 	sf::Texture Icons::SolvedTierBackground;
 	std::unordered_map<int, sf::Texture> Icons::solvedTiers;
+	int Icons::SolvedTierCount;
 
 	void Icons::LoadIcons() {
 		
@@ -29,6 +30,7 @@ namespace nk {
 
 		for (int i = 0; i < 30; i++) {
 			solvedTiers[i].loadFromFile(solvedTierIconsPath + std::to_string(i) + ".png");
+			SolvedTierCount++;
 		}
 
 	}

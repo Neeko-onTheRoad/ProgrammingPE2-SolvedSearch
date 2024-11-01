@@ -168,11 +168,11 @@ namespace nk {
 
 		std::wostringstream infoTextString;
 
-		infoTextString << L"정답률 ";
+		infoTextString << L"평균시도 횟수 ";
 		infoTextString << std::fixed;
 		infoTextString.precision(2);
 		infoTextString << averageTries;
-		infoTextString << L"%  |  정답자 ";
+		infoTextString << L"회  |  정답자 ";
 		infoTextString << acceptedUserCount;
 		infoTextString << L"명";
 
@@ -201,8 +201,14 @@ namespace nk {
 			tagText->setOrigin(0.f, tagText->getGlobalBounds().height);
 			tagText->setPosition(tagButtonPosition);
 
-			float tagRight = tagText->getPosition().x + tagText->getGlobalBounds().width;
-			float backgroundRight = background.getPosition().x + background.getSize().x;
+			float tagRight =
+				tagText->getPosition().x + 
+				tagText->getGlobalBounds().width;
+
+			float backgroundRight = 
+				background.getPosition().x +
+				background.getSize().x -
+				textMargin * ClientWindow::Get().GetSize().y;
 
 			if (tagRight >= backgroundRight) {
 				delete tagText;

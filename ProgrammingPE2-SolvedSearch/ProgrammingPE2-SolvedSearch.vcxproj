@@ -159,6 +159,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AcColors.Cxx" />
     <ClCompile Include="ApiManager.Cxx" />
     <ClCompile Include="Background.Cxx" />
     <ClCompile Include="BuildScene.Cxx" />
