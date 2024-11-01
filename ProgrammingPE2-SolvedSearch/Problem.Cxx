@@ -38,8 +38,8 @@ namespace nk {
 		title = json.at("titleKo");
 		id = json.at("problemId");
 		tier = json.at("level");
-
 		averageTries = json.at("averageTries");
+		acceptedUserCount = json.at("acceptedUserCount");
 		
 		for (auto& tag : json.at("tags")) {
 			tagKeys.push_back(tag.at("key"));

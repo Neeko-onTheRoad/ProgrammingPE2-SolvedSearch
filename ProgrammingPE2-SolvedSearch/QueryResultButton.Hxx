@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <sstream>
 
 #include "Fonts.Hxx"
 #include "ClientObject.Hxx"
@@ -30,6 +31,7 @@ namespace nk {
 		sf::Sprite tier;
 		std::vector<sf::RectangleShape*> tagBackgrounds;
 		std::vector<sf::Text*> tagTexts;
+		sf::Text infoText;
 
 		int id;
 
@@ -57,7 +59,9 @@ namespace nk {
 			int id,
 			int tier,
 			std::vector<std::string> tags,
-			float yPosition
+			float yPosition,
+			float averageTries,
+			int acceptedUserCount
 		);
 
 		sf::Vector2f GetSize() const;

@@ -70,7 +70,9 @@ namespace nk {
 				problem->GetId(),
 				problem->GetTier(),
 				problem->GetTags(),
-				yPosition
+				yPosition,
+				problem->GetAverageTries(),
+				problem->GetAcceptedUserCount()
 			);
 
 			buttons.push_back(newButton);

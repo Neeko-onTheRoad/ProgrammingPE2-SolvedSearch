@@ -17,6 +17,7 @@ namespace nk {
 
 	void QueryResultButton::SetVisualDefault() {
 		background.setFillColor(backgroundColor);
+		infoText.setFillColor(tagColor);
 		for (auto& tagText : tagTexts) {
 			tagText->setFillColor(tagColor);
 		}
@@ -24,6 +25,7 @@ namespace nk {
 
 	void QueryResultButton::SetVisualHover() {
 		background.setFillColor(hoverBackgroundColor);
+		infoText.setFillColor(tagHoverColor);
 		for (auto& tagText : tagTexts) {
 			tagText->setFillColor(tagHoverColor);
 		}
@@ -31,20 +33,22 @@ namespace nk {
 
 	void QueryResultButton::SetVisualClick() {
 		background.setFillColor(clickBackgroundColor);
+		infoText.setFillColor(tagHoverColor);
 		for (auto& tagText : tagTexts) {
 			tagText->setFillColor(tagHoverColor);
 		}
 	}
 
 	void QueryResultButton::OpenWeb() const {
-		std::string	url = "explorer https://noj.am/" + std::to_string(id);
-		system(url.c_str());
+		std::string	cmd = "explorer https://noj.am/" + std::to_string(id);
+		system(cmd.c_str());
 	}
 
 	void QueryResultButton::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		target.draw(background, states);
 		target.draw(name, states);
 		target.draw(tier, states);
+		target.draw(infoText, states);
 
 		for (auto& tagBackground : tagBackgrounds) {
 			target.draw(*tagBackground, states);
@@ -118,7 +122,9 @@ namespace nk {
 		int id,
 		int tier,
 		std::vector<std::string> tags,
-		float yPosition
+		float yPosition,
+		float averageTries,
+		int acceptedUserCount
 	) : solvedManager(solvedManager) {
 
 		this->id = id;
@@ -154,6 +160,28 @@ namespace nk {
 
 		this->tier.setScale(tierScale, tierScale);
 		this->tier.setPosition(tierPosition);
+
+		sf::Vector2f infoTextPosition = {
+			this->tier.getPosition().x + this->tier.getGlobalBounds().width * 2.5f,
+			tierPosition.y
+		};
+
+		std::wostringstream infoTextString;
+
+		infoTextString << L"정답률 ";
+		infoTextString << std::fixed;
+		infoTextString.precision(2);
+		infoTextString << averageTries;
+		infoTextString << L"%  |  정답자 ";
+		infoTextString << acceptedUserCount;
+		infoTextString << L"명";
+
+		infoText.setString(infoTextString.str());
+		infoText.setCharacterSize(tagTextSize - 2);
+		infoText.setFillColor(tagColor);
+		infoText.setPosition(infoTextPosition);
+		infoText.setFont(Fonts::NanumSquareRound::Bold);
+		infoText.setOrigin(infoText.getGlobalBounds().height, 0.f);
 
 		float prevTagXPosition = 0.f;
 
