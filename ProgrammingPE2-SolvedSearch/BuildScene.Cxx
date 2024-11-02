@@ -109,8 +109,10 @@ namespace nk {
 			queryTable,
 			0.0025f,
 			0.05f,
-			0.003f,
-			0.04f,
+			0.0025f,
+			0.01f,
+			0.0035f,
+			0.015f,
 			AcColors::DarkGray,
 			AcColors::LightGray
 		);
@@ -123,6 +125,6 @@ namespace nk {
 		queryButton->SetQueryResult(queryResult);
 		queryButton->SetTierSlide(tierSlide);
 
-
 	}
+
 }

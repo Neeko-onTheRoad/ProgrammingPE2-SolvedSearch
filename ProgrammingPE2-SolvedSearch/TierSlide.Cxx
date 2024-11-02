@@ -25,6 +25,8 @@ namespace nk {
 		float centerLineMargin,
 		float gridLineThickness,
 		float gridLineWidth,
+		float gridStartLineThickness,
+		float gridStartLineWidth,
 		const sf::Color& lineColor,
 		const sf::Color& gridLineDefaultColor
 	) {
@@ -49,21 +51,49 @@ namespace nk {
 
 		gridLines.resize(Icons::SolvedTierCount);
 
-		sf::Vector2f gridLineSize = {
-			gridLineWidth * ClientWindow::Get().GetSize().x,
-			gridLineThickness * ClientWindow::Get().GetSize().y
-		};
+		float gridLineOffset = 
+			centerLineSize.y / (Icons::SolvedTierCount - 1);
 
 		for (int lineIndex = 0; lineIndex < Icons::SolvedTierCount; lineIndex++) {
 
 			sf::RectangleShape* gridLine = new sf::RectangleShape;
 
-			gridLine->setFillColor(gridLineDefaultColor);
-			gridLine->setSize(gridLineSize);
-			gridLine->setOrigin(gridLineSize / 2.f);
-			gridLine->setPosition(centerLinePosition);
-			
-			gridLines.push_back(gridLine);
+			if ((lineIndex - 1) % 5 == 0 || !lineIndex) {
+				sf::Vector2f gridLineSize = {
+					gridStartLineWidth* ClientWindow::Get().GetSize().x,
+					gridLineThickness * ClientWindow::Get().GetSize().y
+				};
+
+				sf::Vector2f gridLinePosition = centerLinePosition + sf::Vector2f(
+					0.f, gridLineOffset * lineIndex
+				);
+
+				gridLine->setFillColor(AcColors::TierColor[lineIndex]);
+				gridLine->setSize(gridLineSize);
+				gridLine->setOrigin(gridLineSize / 2.f);
+				gridLine->setPosition(gridLinePosition);
+
+			}
+			else {
+				sf::Vector2f gridLineSize = {
+					gridLineWidth* ClientWindow::Get().GetSize().x,
+					gridLineThickness* ClientWindow::Get().GetSize().y
+				};
+
+				sf::Vector2f gridLinePosition = centerLinePosition + sf::Vector2f(
+					0.f, gridLineOffset * lineIndex
+				);
+
+				sf::Color gridLineColor = ColorManager::SetOpacity(AcColors::TierColor[lineIndex], 100);
+
+				gridLine->setFillColor(gridLineColor);
+				gridLine->setSize(gridLineSize);
+				gridLine->setOrigin(gridLineSize / 2.f);
+				gridLine->setPosition(gridLinePosition);
+
+			}
+
+			gridLines[lineIndex] = gridLine;
 
 		}
 

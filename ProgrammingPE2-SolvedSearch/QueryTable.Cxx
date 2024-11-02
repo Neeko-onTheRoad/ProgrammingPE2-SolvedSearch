@@ -37,41 +37,56 @@ namespace nk{
 		}
 
 		if (event.type == sf::Event::MouseWheelScrolled) {
-			
-			float newScroll = scroll + 100 * event.mouseWheelScroll.delta;
 
-			if (newScroll > 0.f) newScroll = 0.f;
-			else {
+			sf::Rect scrollRect = sf::Rect(
+				background.getPosition().x + background.getSize().x / 2.f,
+				background.getPosition().y,
+				background.getSize().x / 2.f,
+				background.getSize().y
+			);
+
+			sf::Vector2f scrollPosition = {
+				static_cast<float>(event.mouseWheelScroll.x),
+				static_cast<float>(event.mouseWheelScroll.y)
+			};
+
+			if (scrollRect.contains(scrollPosition)) {
 				
-				float bottom = background.getPosition().y + background.getSize().y;
-				float nowBottom =
-					queryButtons.back()->GetPosition().y +
-					QueryTagButton::GetSize().y;
+				float newScroll = scroll + 100 * event.mouseWheelScroll.delta;
 
-				if (bottom - newScroll + scroll > nowBottom) {
-					float newScrollTemp =
-						background.getSize().y -
-						QueryTagButton::GetSize().y * queryButtons.size();
+				if (newScroll > 0.f) newScroll = 0.f;
+				else {
+				
+					float bottom = background.getPosition().y + background.getSize().y;
+					float nowBottom =
+						queryButtons.back()->GetPosition().y +
+						QueryTagButton::GetSize().y;
 
-					newScroll = newScrollTemp;
+					if (bottom - newScroll + scroll > nowBottom) {
+						float newScrollTemp =
+							background.getSize().y -
+							QueryTagButton::GetSize().y * queryButtons.size();
+
+						newScroll = newScrollTemp;
+					}
+
 				}
 
-			}
+				if (scroll != newScroll) {
+					scroll = newScroll;
 
-			if (scroll != newScroll) {
-				scroll = newScroll;
-
-				for (int i = 0; i < queryButtons.size(); i++) {
-					QueryTagButton* queryButton = queryButtons[i];
+					for (int i = 0; i < queryButtons.size(); i++) {
+						QueryTagButton* queryButton = queryButtons[i];
 				
-					sf::Vector2f position = queryButtonOrigin + sf::Vector2(
-						0.f, QueryTagButton::GetSize().y * i + scroll
-					);
+						sf::Vector2f position = queryButtonOrigin + sf::Vector2(
+							0.f, QueryTagButton::GetSize().y * i + scroll
+						);
 
-					queryButton->SetPosition(position);
+						queryButton->SetPosition(position);
+					}
+
+					isNeedRerender = true;
 				}
-
-				isNeedRerender = true;
 			}
 		}
 

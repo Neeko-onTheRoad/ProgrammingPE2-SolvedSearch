@@ -28,7 +28,7 @@ namespace nk {
 
 		std::string solvedTierIconsPath = IconPath + "SolvedTier/";
 
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i <= 30; i++) {
 			solvedTiers[i].loadFromFile(solvedTierIconsPath + std::to_string(i) + ".png");
 			SolvedTierCount++;
 		}

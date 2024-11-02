@@ -28,6 +28,8 @@ namespace nk {
 			float centerLineMargin,
 			float gridLineThickness,
 			float gridLineWidth,
+			float gridStartLineThickness,
+			float gridStartLineWidth,
 			const sf::Color& lineColor,
 			const sf::Color& gridLineDefaultColor
 		);
