@@ -8,6 +8,10 @@ namespace nk {
 		for (auto& gridLine : gridLines) {
 			target.draw(*gridLine, states);
 		}
+
+		for (auto& scrollCircle : scrollCircles) {
+			target.draw(scrollCircle, states);
+		}
 	}
 
 	void TierSlide::Update(const sf::Event& event) {
@@ -27,8 +31,15 @@ namespace nk {
 		float gridLineWidth,
 		float gridStartLineThickness,
 		float gridStartLineWidth,
+		float scrollBarThickness,
+		float scrollCircleSize,
+		float scrollCircleOutlineSize,
 		const sf::Color& lineColor,
-		const sf::Color& gridLineDefaultColor
+		const sf::Color& gridLineDefaultColor,
+		const sf::Color& scrollBarColor,
+		const sf::Color& scrollCircleDefaultColor,
+		const sf::Color& scrollCircleHoverColor,
+		const sf::Color& scrollCircleClickColor
 	) {
 		
 		this->queryTable = queryTable;
@@ -96,6 +107,20 @@ namespace nk {
 			gridLines[lineIndex] = gridLine;
 
 		}
+
+
+		for (auto& scrollCircle : scrollCircles) {
+				
+			scrollCircle.setFillColor(scrollCircleDefaultColor);
+			scrollCircle.setRadius(scrollCircleSize);
+			scrollCircle.setOutlineThickness(scrollCircleOutlineSize);
+			scrollCircle.setOutlineColor(scrollBarColor);
+			scrollCircle.setOrigin(scrollCircle.getGlobalBounds().getSize() / 2.f);
+
+		}
+
+		scrollCircles[0].setPosition(gridLines.front()->getPosition());
+		scrollCircles[1].setPosition(gridLines.back()->getPosition());
 
 	}
 

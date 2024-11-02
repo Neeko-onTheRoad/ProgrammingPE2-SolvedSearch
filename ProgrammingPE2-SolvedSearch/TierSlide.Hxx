@@ -15,6 +15,7 @@ namespace nk {
 
 		sf::RectangleShape centerLine;
 		std::vector<sf::RectangleShape*> gridLines;
+		sf::CircleShape scrollCircles[2];
 
 	protected:
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -30,8 +31,15 @@ namespace nk {
 			float gridLineWidth,
 			float gridStartLineThickness,
 			float gridStartLineWidth,
+			float scrollBarThickness,
+			float scrollCircleSize,
+			float scrollCircleOutlineThickness,
 			const sf::Color& lineColor,
-			const sf::Color& gridLineDefaultColor
+			const sf::Color& gridLineDefaultColor,
+			const sf::Color& scrollBarColor,
+			const sf::Color& scrollCircleDefaultColor,
+			const sf::Color& scrollCircleHoverColor,
+			const sf::Color& scrollCircleClickColor
 		);
 
 

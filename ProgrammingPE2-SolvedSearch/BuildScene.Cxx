@@ -25,14 +25,14 @@ namespace nk {
 		loadingScreen.display();
 
 		nk::TitleBar* titleBar = new nk::TitleBar(
-			0.04f, // height
-			0.035f, // buttonWidth
-			0.43f, // iconSize
-			AcColors::DarkerGray, // backgroundColor
-			AcColors::LightGray, // iconColor
-			AcColors::White, // iconHoverColor
-			AcColors::LightGray, // iconHoverBackgroundColor
-			AcColors::Hilight // iconClickBackgroundColor
+			0.04f,					// height
+			0.035f,					// buttonWidth
+			0.43f,					// iconSize
+			AcColors::DarkerGray,	// backgroundColor
+			AcColors::LightGray,	// iconColor
+			AcColors::White,		// iconHoverColor
+			AcColors::LightGray,	// iconHoverBackgroundColor
+			AcColors::Hilight		// iconClickBackgroundColor
 		);
 
 		AddObject(
@@ -49,14 +49,14 @@ namespace nk {
 		);
 
 		QueryTable* queryTable = new QueryTable(
-			0.48f, // width
-			0.02f, // margin
-			0.001f, // centerLineThickness
-			0.02f, // centerLineMargin
-			0.04f, // buttonLineMargin
-			0.185f, // buttonLineBottomMargin
-			AcColors::DarkerGray, // backgroundColor
-			AcColors::DarkGray // centerLineColor
+			0.48f,					// width
+			0.02f,					// margin
+			0.001f,					// centerLineThickness
+			0.02f,					// centerLineMargin
+			0.04f,					// buttonLineMargin
+			0.185f,					// buttonLineBottomMargin
+			AcColors::DarkerGray,	// backgroundColor
+			AcColors::DarkGray		// centerLineColor
 		);
 
 		AddObject(
@@ -65,16 +65,16 @@ namespace nk {
 		);
 
 		QueryButton* queryButton = new QueryButton(
-			queryTable, // queryTable
-			{ 0.25f, 0.08f }, // size
-			0.88f, // xPos
-			30, // fontSize
-			AcColors::DarkGray, // backgroundColor
-			AcColors::LightGray, // foregroundColor
-			AcColors::LightGray, // hoverBackgroundColor
-			AcColors::White, // hoverForegroundColor
-			AcColors::Hilight, // clickBackgroundColor
-			AcColors::White // clickForegroundColor
+			queryTable,				// queryTable
+			{ 0.25f, 0.08f },		// size
+			0.88f,					// xPos
+			30,						// fontSize
+			AcColors::DarkGray,		// backgroundColor
+			AcColors::LightGray,	// foregroundColor
+			AcColors::LightGray,	// hoverBackgroundColor
+			AcColors::White,		// hoverForegroundColor
+			AcColors::Hilight,		// clickBackgroundColor
+			AcColors::White			// clickForegroundColor
 		);
 
 		AddObject(
@@ -93,11 +93,11 @@ namespace nk {
 		}; 
 
 		QueryResult* queryResult = new QueryResult(
-			queryTable->SolvedManager,
-			queryResultPosition,
-			queryResultSize,
-			5,
-			queryTable->GetMargin()
+			queryTable->SolvedManager,	// solvedManager
+			queryResultPosition,		// position
+			queryResultSize,			// size
+			5,							// buttonCount
+			queryTable->GetMargin()		// buttonMargin
 		);
 
 		AddObject(
@@ -106,15 +106,22 @@ namespace nk {
 		);
 
 		TierSlide* tierSlide = new TierSlide(
-			queryTable,
-			0.0025f,
-			0.05f,
-			0.0025f,
-			0.01f,
-			0.0035f,
-			0.015f,
-			AcColors::DarkGray,
-			AcColors::LightGray
+			queryTable,				// queryTable
+			0.0025f,				// centerLineThickness
+			0.05f,					// centerLineMargin
+			0.0025f,				// gridLineThickness
+			0.01f,					// gridLineWidth
+			0.0035f,				// gridStartLineThickness
+			0.015f,					// gridStartLineWidth
+			0.004f,					// scrollBarThickness
+			5.f,					// scrollCircleSize,
+			2.f,					// scrollCircleOutlineThickness,
+			AcColors::DarkGray,		// lineColor
+			AcColors::LightGray,	// gridLineDefaultColor
+			AcColors::Hilight,		// scrollBarColor
+			AcColors::DarkGray,		// scolorCircleDefaultColor
+			AcColors::LightGray,	// scrollCircleHoverColor
+			AcColors::Hilight		// scrollCircleClickColor
 		);
 
 		AddObject(
