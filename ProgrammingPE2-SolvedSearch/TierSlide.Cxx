@@ -27,7 +27,7 @@ namespace nk {
 			static_cast<float>(event.mouseButton.y)
 		);
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < (scrollLevel[0] == scrollLevel[1] ? 1 : 2); i++) {
 
 			sf::CircleShape& circle = scrollCircles[i];
 
@@ -41,15 +41,44 @@ namespace nk {
 			if (clicking) {
 				if (event.type == sf::Event::MouseMoved) {
 
-					if (scrollLevel == 0) {
+					sf::Vector2f mouseCurrentPosition = {
+						circle.getPosition().x,
+						mousePosition.y
+					};
 
+					if (mouseCurrentPosition.y <= gridLines.front()->getPosition().y) {
+						mouseCurrentPosition.y = gridLines.front()->getPosition().y;
+						scrollLevel = 0;
 					}
-					else if (scrollLevel == Icons::SolvedTierCount) {
-
+					else if (mouseCurrentPosition.y >= gridLines.back()->getPosition().y) {
+						mouseCurrentPosition.y = gridLines.back()->getPosition().y;
+						scrollLevel = gridLines.size() - 1;
 					}
 					else {
+						auto it = gridLines.begin();
+						for (int index = 0; std::next(it) != gridLines.end(); ++it, ++index) {
+							float currentY = (*it)->getPosition().y;
+							float nextY = (*std::next(it))->getPosition().y;
 
+							if (mouseCurrentPosition.y > currentY && mouseCurrentPosition.y <= nextY) {
+								float halfPoint = currentY + (nextY - currentY) / 2.f;
+
+								if (mouseCurrentPosition.y > halfPoint) {
+									mouseCurrentPosition.y = nextY;
+									scrollLevel = index + 1;
+								}
+								else {
+									mouseCurrentPosition.y = currentY;
+									scrollLevel = index;
+								}
+								break;
+							}
+						}
 					}
+
+					circle.setPosition(mouseCurrentPosition);
+
+					UpdateScrollBar();
 
 					continue;
 				}
@@ -227,6 +256,10 @@ namespace nk {
 		scrollBar.setFillColor(scrollBarColor);
 		UpdateScrollBar();
 
+	}
+
+	int* TierSlide::GetRange() {
+		return new int[] { scrollLevel[0], scrollLevel[1] };
 	}
 
 }

@@ -56,7 +56,7 @@ namespace nk {
 			const sf::Color& scrollCircleClickColor
 		);
 
-
+		int* GetRange();
 
 	};
 

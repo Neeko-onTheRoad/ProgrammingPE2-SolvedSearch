@@ -19,8 +19,15 @@ namespace nk {
 
 	void QueryButton::Search() {
 
-		std::vector<std::string> activatedTags = queryTable->GetActiveTags();
-		const std::vector<Problem*>& problems = queryTable->SolvedManager.GetProblems(activatedTags, 0, 30);
+		std::vector<std::string> activatedTags =
+			queryTable->GetActiveTags();
+
+		const std::vector<Problem*>& problems =
+			queryTable->SolvedManager.GetProblems(
+				activatedTags,
+				tierSlide->GetRange()[0],
+				tierSlide->GetRange()[1]
+			);
 
 		queryResult->SetButton(problems);
 
