@@ -7,6 +7,8 @@ namespace nk {
 	const std::string SolvedAcManager::URI_TAG_LIST = "tag/list";
 	const std::string SolvedAcManager::URI_TAG_SHOW = "tag/show";
 
+	std::vector<std::string> SolvedAcManager::solvedTiers;
+
 	SolvedAcManager::SolvedAcManager() : apiManager(URL_SOLVED_AC) {
 
 		SetConsoleOutputCP(CP_UTF8);
@@ -99,6 +101,25 @@ namespace nk {
 
 		return problems;
 
+    }
+
+	void SolvedAcManager::MakeTierNames() {
+
+		solvedTiers.push_back("Unknown");
+
+		std::string tierNames[] = {
+			"Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby"
+		};
+
+		for (auto& tierName : tierNames) {
+			for (int level = 5; level >= 1; level--) {
+				solvedTiers.push_back(tierName + " " + std::to_string(level));
+			}
+		}
+	}
+
+	std::string SolvedAcManager::GetSolvedTier(int tierCode) {
+		return solvedTiers[tierCode];
     }
 	
 }

@@ -36,6 +36,7 @@ namespace nk {
 		Fonts::LoadFonts();
 		Icons::LoadIcons();
 		AcColors::LoadColors();
+		SolvedAcManager::MakeTierNames();
 
 		renderWindow = new sf::RenderWindow(
 			sf::VideoMode(DEFAULT_SIZE.x, DEFAULT_SIZE.y),

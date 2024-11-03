@@ -1,6 +1,7 @@
 #pragma once
 
 #include <set>
+#include <vector>
 #include <string>
 #include <nlohmann/json.hpp>
 #include "Problem.Hxx"
@@ -33,6 +34,8 @@ namespace nk {
 		std::unordered_map<std::string, std::string> tagKeyNameTable;
 		std::unordered_map<std::string, std::string> tagNameKeyTable;
 
+		static std::vector<std::string> solvedTiers;
+
 //======================================================================| Con/Destructors
 
 	public:
@@ -55,6 +58,9 @@ namespace nk {
 			int minTier,
 			int maxTier
 		);
+
+		static void MakeTierNames();
+		static std::string GetSolvedTier(int tierCode);
 
 	};
 
